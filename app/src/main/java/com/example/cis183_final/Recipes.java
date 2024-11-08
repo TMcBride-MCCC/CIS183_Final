@@ -1,6 +1,8 @@
 package com.example.cis183_final;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -32,5 +34,19 @@ public class Recipes extends AppCompatActivity
         lv_j_recipes_recipeList = findViewById(R.id.lv_v_recipes_recipeList);
         btn_j_recipes_newRecipe = findViewById(R.id.btn_v_recipes_newRecipe);
         bnv_j_recipes_bottomNav = findViewById(R.id.bnv_v_recipes_bottomNav);
+
+        //Functions
+        newRecipeButtonClickListener();
+    }
+    private void newRecipeButtonClickListener()
+    {
+        btn_j_recipes_newRecipe.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(Recipes.this, NewRecipe.class));
+            }
+        });
     }
 }
