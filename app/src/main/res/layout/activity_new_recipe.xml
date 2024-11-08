@@ -8,6 +8,20 @@
     tools:context=".NewRecipe">
 
     <Button
+        android:id="@+id/btn_v_newRecipe_deleteIngredientLine8"
+        android:layout_width="27dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient7" />
+
+    <Button
         android:id="@+id/btn_v_newRecipe_deleteIngredientLine7"
         android:layout_width="27dp"
         android:layout_height="25dp"
@@ -17,9 +31,9 @@
         android:padding="0dp"
         android:text="-"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient7" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient6" />
 
     <Button
         android:id="@+id/btn_v_newRecipe_deleteIngredientLine6"
@@ -31,9 +45,9 @@
         android:padding="0dp"
         android:text="-"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient6" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient5" />
 
     <Button
         android:id="@+id/btn_v_newRecipe_deleteIngredientLine5"
@@ -45,9 +59,9 @@
         android:padding="0dp"
         android:text="-"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient5" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient4" />
 
     <Button
         android:id="@+id/btn_v_newRecipe_deleteIngredientLine4"
@@ -59,9 +73,9 @@
         android:padding="0dp"
         android:text="-"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient4" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient3" />
 
     <Button
         android:id="@+id/btn_v_newRecipe_deleteIngredientLine3"
@@ -73,9 +87,9 @@
         android:padding="0dp"
         android:text="-"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient3" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient2" />
 
     <Button
         android:id="@+id/btn_v_newRecipe_deleteIngredientLine2"
@@ -88,20 +102,6 @@
         android:text="-"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient2" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine1"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="-"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient1" />
 
@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient7" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine7"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine8"
         android:layout_width="27dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -185,7 +185,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient6" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine6"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine7"
         android:layout_width="27dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -232,7 +232,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient5" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine5"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine6"
         android:layout_width="27dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -279,7 +279,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit4" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine4"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine5"
         android:layout_width="27dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -294,7 +294,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient4" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine3"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine4"
         android:layout_width="27dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -373,7 +373,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity2" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine2"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine3"
         android:layout_width="27dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -564,7 +564,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine1"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine2"
         android:layout_width="27dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
