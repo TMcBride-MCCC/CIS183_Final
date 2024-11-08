@@ -80,7 +80,7 @@ public class MealPlan extends AppCompatActivity
         cv_j_mealPlan_dinner3 = findViewById(R.id.cv_v_mealPlan_dinner3);
         cv_j_mealPlan_dinner4 = findViewById(R.id.cv_v_mealPlan_dinner4);
         cv_j_mealPlan_dinner5 = findViewById(R.id.cv_v_mealPlan_dinner5);
-        
+
         //Functions
         getDay();
         submitButtonOnClickListener();
