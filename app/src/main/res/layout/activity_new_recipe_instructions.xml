@@ -7,4 +7,66 @@
     android:layout_height="match_parent"
     tools:context=".NewRecipeInstructions">
 
+    <Button
+        android:id="@+id/btn_v_newRecipeInstructions_doNotAddInstructions"
+        android:layout_width="236dp"
+        android:layout_height="74dp"
+        android:text="RETURN WITHOUT ADDING"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="685dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_v_newRecipeInstructions_bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
+    <TextView
+        android:id="@+id/tv_v_newRecipeInstructions_recipeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Recipe Name Here"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Instructions"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_v_newRecipeInstructions_recipeName" />
+
+    <EditText
+        android:id="@+id/et_v_newRecipeInstructions_instructions"
+        android:layout_width="278dp"
+        android:layout_height="500dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="99dp" />
+
+    <Button
+        android:id="@+id/btn_v_newRecipeInstructions_addInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD INSTRUCTIONS"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="628dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
