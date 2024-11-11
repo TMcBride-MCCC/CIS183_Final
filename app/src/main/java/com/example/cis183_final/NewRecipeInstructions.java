@@ -1,6 +1,8 @@
 package com.example.cis183_final;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,5 +34,32 @@ public class NewRecipeInstructions extends AppCompatActivity
         btn_j_newRecipeInstructions_addInstructions = findViewById(R.id.btn_v_newRecipeInstructions_addInstructions);
         btn_j_newRecipeInstructions_doNotAddInstructions = findViewById(R.id.btn_v_newRecipeInstructions_doNotAddInstructions);
 
+        //Functions
+        addInstructionsButtonClickListener();
+        doNotAddInstructionsButtonClickListener();
+    }
+
+    private void addInstructionsButtonClickListener()
+    {
+        btn_j_newRecipeInstructions_addInstructions.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(NewRecipeInstructions.this, NewRecipe.class));
+            }
+        });
+    }
+
+    private void doNotAddInstructionsButtonClickListener()
+    {
+        btn_j_newRecipeInstructions_doNotAddInstructions.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(NewRecipeInstructions.this, NewRecipe.class));
+            }
+        });
     }
 }

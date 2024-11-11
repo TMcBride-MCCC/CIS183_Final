@@ -95,6 +95,7 @@ public class NewRecipe extends AppCompatActivity
         addButtonClickListener();
         deleteButtonClickListener();
         addRecipeButtonClickListener();
+        addInstructionsButtonClickListener();
     }
 
     private void lineJavaVariables()
@@ -274,6 +275,18 @@ public class NewRecipe extends AppCompatActivity
             public void onClick(View view)
             {
                 startActivity(new Intent(NewRecipe.this, Recipes.class));
+            }
+        });
+    }
+
+    private void addInstructionsButtonClickListener()
+    {
+        btn_j_newRecipe_addRecipeInstructions.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(NewRecipe.this, NewRecipeInstructions.class));
             }
         });
     }

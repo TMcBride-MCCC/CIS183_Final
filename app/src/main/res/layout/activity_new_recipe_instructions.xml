@@ -11,10 +11,13 @@
         android:id="@+id/btn_v_newRecipeInstructions_doNotAddInstructions"
         android:layout_width="236dp"
         android:layout_height="74dp"
+        android:layout_marginTop="9dp"
         android:text="RETURN WITHOUT ADDING"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="685dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_newRecipeInstructions_addInstructions" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_v_newRecipeInstructions_bottomNav"
@@ -57,16 +60,21 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="99dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <Button
         android:id="@+id/btn_v_newRecipeInstructions_addInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
         android:text="ADD INSTRUCTIONS"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="628dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_v_newRecipeInstructions_instructions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
