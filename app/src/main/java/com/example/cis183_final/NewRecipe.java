@@ -1,5 +1,6 @@
 package com.example.cis183_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ public class NewRecipe extends AppCompatActivity
     //Create JAVA variables
     Spinner sp_j_newRecipe_mealTime;
     EditText et_j_newRecipe_recipeName;
+    Button btn_j_newRecipe_addRecipe;
+    Button btn_j_newRecipe_addRecipeInstructions;
     //Ingredient line #1
     Spinner sp_j_newRecipe_ingredient1;
     Spinner sp_j_newRecipe_quantity1;
@@ -66,6 +69,8 @@ public class NewRecipe extends AppCompatActivity
     Spinner sp_j_newRecipe_unit8;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -76,6 +81,24 @@ public class NewRecipe extends AppCompatActivity
         //Connect JAVA variables to GUI variables
         sp_j_newRecipe_mealTime = findViewById(R.id.sp_v_newRecipe_mealTime);
         et_j_newRecipe_recipeName = findViewById(R.id.et_v_newRecipe_recipeName);
+        btn_j_newRecipe_addRecipe = findViewById(R.id.btn_v_newRecipe_addRecipe);
+        btn_j_newRecipe_addRecipeInstructions = findViewById(R.id.btn_v_newRecipe_addRecipeInstructions);
+
+
+        //Functions
+        //Adding this function to de-clutter onCreate
+        lineJavaVariables();
+        //OnStat all buttons  besides line 2 invisible
+        onStartSetButtonsInvisible();
+        //OnStart all spinners besides line 1 invisible
+        onStartSetSpinnersInvisible();
+        addButtonClickListener();
+        deleteButtonClickListener();
+        addRecipeButtonClickListener();
+    }
+
+    private void lineJavaVariables()
+    {
         //Ingredient line #1
         sp_j_newRecipe_ingredient1 = findViewById(R.id.sp_v_newRecipe_ingredient1);
         sp_j_newRecipe_quantity1 = findViewById(R.id.sp_v_newRecipe_quantity1);
@@ -122,11 +145,6 @@ public class NewRecipe extends AppCompatActivity
         sp_j_newRecipe_ingredient8 = findViewById(R.id.sp_v_newRecipe_ingredient8);
         sp_j_newRecipe_quantity8 = findViewById(R.id.sp_v_newRecipe_quantity8);
         sp_j_newRecipe_unit8 = findViewById(R.id.sp_v_newRecipe_unit8);
-
-        //Functions
-        onStartSetButtonsInvisible();
-        onStartSetSpinnersInvisible();
-        line2ButtonClickListener();
     }
 
     private void onStartSetButtonsInvisible()
@@ -183,17 +201,79 @@ public class NewRecipe extends AppCompatActivity
         sp_j_newRecipe_unit8.setVisibility(View.INVISIBLE);
     }
 
-    private void line2ButtonClickListener()
+    private void addButtonClickListener()
     {
+        //Add line 2
+        btn_j_newRecipe_addIngredientLine2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //Set line 2 spinners visible
+                sp_j_newRecipe_ingredient2.setVisibility(View.VISIBLE);
+                sp_j_newRecipe_quantity2.setVisibility(View.VISIBLE);
+                sp_j_newRecipe_unit2.setVisibility(View.VISIBLE);
+                //Set line 3 buttons visible
+                btn_j_newRecipe_addIngredientLine3.setVisibility(View.VISIBLE);
+                btn_j_newRecipe_deleteIngredientLine3.setVisibility(View.VISIBLE);
+            }
+        });
+
+        //Add line 3
+        btn_j_newRecipe_addIngredientLine3.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //Set line 3 spinners visible
+                sp_j_newRecipe_ingredient3.setVisibility(View.VISIBLE);
+                sp_j_newRecipe_quantity3.setVisibility(View.VISIBLE);
+                sp_j_newRecipe_unit3.setVisibility(View.VISIBLE);
+                //Set line 4 buttons visible
+                btn_j_newRecipe_addIngredientLine4.setVisibility(View.VISIBLE);
+                btn_j_newRecipe_deleteIngredientLine4.setVisibility(View.VISIBLE);
+            }
+        });
+
+    }
+
+    private void deleteButtonClickListener()
+    {
+        //Delete line 2
         btn_j_newRecipe_deleteIngredientLine2.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                if (line2IsShowing)
-                {
+                //Set line 2 spinners invisible
+                sp_j_newRecipe_ingredient2.setVisibility(View.INVISIBLE);
+                sp_j_newRecipe_quantity2.setVisibility(View.INVISIBLE);
+                sp_j_newRecipe_unit2.setVisibility(View.INVISIBLE);
+            }
+        });
 
-                }
+        //Delete line 3
+        btn_j_newRecipe_deleteIngredientLine3.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //Set line 3 spinners invisible
+                sp_j_newRecipe_ingredient3.setVisibility(View.INVISIBLE);
+                sp_j_newRecipe_quantity3.setVisibility(View.INVISIBLE);
+                sp_j_newRecipe_unit3.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    private void addRecipeButtonClickListener()
+    {
+        btn_j_newRecipe_addRecipe.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(NewRecipe.this, Recipes.class));
             }
         });
     }
