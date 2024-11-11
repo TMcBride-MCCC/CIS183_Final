@@ -122,15 +122,18 @@ public class MealPlan extends AppCompatActivity
                 }
                 else if (navItem == R.id.recipes)
                 {
-                    //Put Recipe code here
+                    startActivity(new Intent(MealPlan.this, Recipes.class));
+                    return true;
                 }
                 else if (navItem == R.id.pantry)
                 {
-                    //Put Pantry code here
+                    startActivity(new Intent(MealPlan.this, Pantry.class));
+                    return true;
                 }
                 else if (navItem == R.id.groceryList)
                 {
-                    //Put GroceryList code here
+                    startActivity(new Intent(MealPlan.this, GroceryList.class));
+                    return true;
                 }
 
                 return false;

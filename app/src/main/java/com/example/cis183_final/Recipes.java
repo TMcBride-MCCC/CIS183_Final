@@ -2,11 +2,13 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -36,8 +38,45 @@ public class Recipes extends AppCompatActivity
         bnv_j_recipes_bottomNav = findViewById(R.id.bnv_v_recipes_bottomNav);
 
         //Functions
+        bottomNavOnNavItemSelectedListener();
         newRecipeButtonClickListener();
     }
+
+    private void bottomNavOnNavItemSelectedListener()
+    {
+        bnv_j_recipes_bottomNav.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                int navItem = item.getItemId();
+
+                if (navItem == R.id.home)
+                {
+                    startActivity(new Intent(Recipes.this, HomePage.class));
+                    return true;
+                }
+                else if (navItem == R.id.recipes)
+                {
+                    startActivity(new Intent(Recipes.this, Recipes.class));
+                    return true;
+                }
+                else if (navItem == R.id.pantry)
+                {
+                    startActivity(new Intent(Recipes.this, Pantry.class));
+                    return true;
+                }
+                else if (navItem == R.id.groceryList)
+                {
+                    startActivity(new Intent(Recipes.this, GroceryList.class));
+                    return true;
+                }
+
+                return false;
+            }
+        });
+    }
+
     private void newRecipeButtonClickListener()
     {
         btn_j_recipes_newRecipe.setOnClickListener(new View.OnClickListener()

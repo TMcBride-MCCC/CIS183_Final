@@ -2,16 +2,20 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class NewRecipe extends AppCompatActivity
 {
@@ -20,6 +24,7 @@ public class NewRecipe extends AppCompatActivity
     EditText et_j_newRecipe_recipeName;
     Button btn_j_newRecipe_addRecipe;
     Button btn_j_newRecipe_addRecipeInstructions;
+    BottomNavigationView bnv_j_newRecipe_bottomNav;
     //Ingredient line #1
     Spinner sp_j_newRecipe_ingredient1;
     Spinner sp_j_newRecipe_quantity1;
@@ -83,9 +88,11 @@ public class NewRecipe extends AppCompatActivity
         et_j_newRecipe_recipeName = findViewById(R.id.et_v_newRecipe_recipeName);
         btn_j_newRecipe_addRecipe = findViewById(R.id.btn_v_newRecipe_addRecipe);
         btn_j_newRecipe_addRecipeInstructions = findViewById(R.id.btn_v_newRecipe_addRecipeInstructions);
+        bnv_j_newRecipe_bottomNav = findViewById(R.id.bnv_v_newRecipe_bottomNav);
 
 
         //Functions
+        bottomNavOnNavItemSelectedListener();
         //Adding this function to de-clutter onCreate
         lineJavaVariables();
         //OnStat all buttons  besides line 2 invisible
@@ -96,6 +103,41 @@ public class NewRecipe extends AppCompatActivity
         deleteButtonClickListener();
         addRecipeButtonClickListener();
         addInstructionsButtonClickListener();
+    }
+
+    private void bottomNavOnNavItemSelectedListener()
+    {
+        bnv_j_newRecipe_bottomNav.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                int navItem = item.getItemId();
+
+                if (navItem == R.id.home)
+                {
+                    startActivity(new Intent(NewRecipe.this, HomePage.class));
+                    return true;
+                }
+                else if (navItem == R.id.recipes)
+                {
+                    startActivity(new Intent(NewRecipe.this, Recipes.class));
+                    return true;
+                }
+                else if (navItem == R.id.pantry)
+                {
+                    startActivity(new Intent(NewRecipe.this, Pantry.class));
+                    return true;
+                }
+                else if (navItem == R.id.groceryList)
+                {
+                    startActivity(new Intent(NewRecipe.this, GroceryList.class));
+                    return true;
+                }
+
+                return false;
+            }
+        });
     }
 
     private void lineJavaVariables()

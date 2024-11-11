@@ -164,7 +164,8 @@ public class HomePage extends AppCompatActivity
                 }
                 else if (navItem == R.id.groceryList)
                 {
-                    //Put GroceryList code here
+                    startActivity(new Intent(HomePage.this, GroceryList.class));
+                    return true;
                 }
 
                 return false;
