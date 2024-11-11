@@ -159,7 +159,8 @@ public class HomePage extends AppCompatActivity
                 }
                 else if (navItem == R.id.pantry)
                 {
-                    //Put Pantry code here
+                    startActivity(new Intent(HomePage.this, Pantry.class));
+                    return true;
                 }
                 else if (navItem == R.id.groceryList)
                 {
