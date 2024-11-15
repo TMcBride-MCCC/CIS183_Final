@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity
     //Create Java variables
     EditText et_j_main_username;
     EditText et_j_main_password;
+    EditText et_j_main_fName;
+    EditText et_j_main_lName;
     EditText et_j_main_email;
     Button btn_j_main_signUp;
     TextView tv_j_main_signIn;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity
         //Connect Java variables to GUI variables
         et_j_main_username = findViewById(R.id.et_v_main_username);
         et_j_main_password = findViewById(R.id.et_v_main_password);
+        et_j_main_fName = findViewById(R.id.et_v_main_fName);
+        et_j_main_lName = findViewById(R.id.et_v_main_lName);
         et_j_main_email = findViewById(R.id.et_v_main_email);
         btn_j_main_signUp = findViewById(R.id.btn_v_main_signUp);
         tv_j_main_signIn = findViewById(R.id.tv_v_main_signIn);
