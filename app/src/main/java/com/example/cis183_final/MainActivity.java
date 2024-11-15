@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity
     EditText et_j_main_email;
     Button btn_j_main_signUp;
     TextView tv_j_main_signIn;
+    //Database
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity
         et_j_main_email = findViewById(R.id.et_v_main_email);
         btn_j_main_signUp = findViewById(R.id.btn_v_main_signUp);
         tv_j_main_signIn = findViewById(R.id.tv_v_main_signIn);
+        //Database
+        dbHelper = new DatabaseHelper(this);
 
         //Functions
         signUpButtonClickListener();
