@@ -1,8 +1,10 @@
 package com.example.cis183_final;
 
 import android.content.Context;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper
 {
@@ -96,5 +98,127 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         //Recreate Tables
         onCreate(db);
+    }
+
+    //Getter functions for table names
+    public String getUserDbName()
+    {
+        return users_table_name;
+    }
+
+    public String getPantryDbName()
+    {
+        return pantry_table_name;
+    }
+
+    public String getRecipeDbName()
+    {
+        return recipes_table_name;
+    }
+
+    public String getMealTimeDbName()
+    {
+        return mealTime_table_name;
+    }
+
+    public String getIngredientsDbName()
+    {
+        return ingredients_table_name;
+    }
+
+    public String getCategoryDbName()
+    {
+        return category_table_name;
+    }
+
+    public String getRecipeIngredientsDbName()
+    {
+        return recipeIngredients_table_name;
+    }
+
+    public String getUnitsDbName()
+    {
+        return units_table_name;
+    }
+
+    //Function to initialize all tables with dummy data
+    public void initAllTables()
+    {
+        initUsers();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(users_table_name));
+        initPantries();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(pantry_table_name));
+        initRecipes();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(recipes_table_name));
+        initMealTimes();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(mealTime_table_name));
+        initIngredients();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(ingredients_table_name));
+        initCategories();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(category_table_name));
+        initRecipeIngredients();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(recipeIngredients_table_name));
+        initUnits();
+        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(units_table_name));
+    }
+
+    //Initialize user table with dummy data
+    private void initUsers()
+    {
+
+    }
+
+    //Initialize pantry table with dummy data
+    private void initPantries()
+    {
+
+    }
+
+    //Initialize recipe table with dummy data
+    private void initRecipes()
+    {
+
+    }
+
+    //Initialize meal time table with dummy data
+    private void initMealTimes()
+    {
+
+    }
+
+    //Initialize ingredients table with dummy data
+    private void initIngredients()
+    {
+
+    }
+
+    //Initialize category table with dummy data
+    private void initCategories()
+    {
+
+    }
+
+    //Initialize recipe ingredients table with dummy data
+    private void initRecipeIngredients()
+    {
+
+    }
+
+    //Initialize units table with dummy data
+    private void initUnits()
+    {
+
+    }
+
+    //Function used to count the records in a table
+    public int countTableRecords(String tableName)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, tableName);
+
+        db.close();
+
+        return numRows;
     }
 }
