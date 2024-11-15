@@ -82,8 +82,19 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1)
+    public void onUpgrade(SQLiteDatabase db, int i, int i1)
     {
+        //Delete Tables
+        db.execSQL("DROP TABLE IF EXISTS " + users_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + pantry_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + recipes_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + mealTime_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + ingredients_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + category_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + recipeIngredients_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + units_table_name + ";");
 
+        //Recreate Tables
+        onCreate(db);
     }
 }
