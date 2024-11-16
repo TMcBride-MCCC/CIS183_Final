@@ -38,6 +38,9 @@ public class AddIngredient extends AppCompatActivity
         btn_j_addIngredient_addIngredient = findViewById(R.id.btn_v_addIngredient_addIngredient);
         bnv_j_addIngredient_bottomNav = findViewById(R.id.bnv_v_addIngredient_bottomNav);
 
+        //Set the navigation bar icon
+        bnv_j_addIngredient_bottomNav.setSelectedItemId(R.id.pantry);
+
         //Functions
         bottomNavOnNavItemSelectedListener();
         addIngredientButtonClickListener();

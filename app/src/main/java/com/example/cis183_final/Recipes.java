@@ -37,6 +37,9 @@ public class Recipes extends AppCompatActivity
         btn_j_recipes_newRecipe = findViewById(R.id.btn_v_recipes_newRecipe);
         bnv_j_recipes_bottomNav = findViewById(R.id.bnv_v_recipes_bottomNav);
 
+        //Set the navigation bar icon
+        bnv_j_recipes_bottomNav.setSelectedItemId(R.id.recipes);
+
         //Functions
         bottomNavOnNavItemSelectedListener();
         newRecipeButtonClickListener();

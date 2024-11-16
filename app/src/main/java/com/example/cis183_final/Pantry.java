@@ -35,6 +35,9 @@ public class Pantry extends AppCompatActivity
         btn_j_pantry_addIngredient = findViewById(R.id.btn_v_pantry_addIngredient);
         bnv_j_pantry_bottomNav = findViewById(R.id.bnv_v_pantry_bottomNav);
 
+        //Set the navigation bar icon
+        bnv_j_pantry_bottomNav.setSelectedItemId(R.id.pantry);
+
         //Functions
         bottomNavOnNavItemSelectedListener();
         addIngredientButtonClickListener();

@@ -31,6 +31,9 @@ public class GroceryList extends AppCompatActivity
         lv_j_groceryList_listOfGroceries = findViewById(R.id.lv_v_groceryList_listOfGroceries);
         bnv_j_groceryList_bottomNav = findViewById(R.id.bnv_v_groceryList_bottomNav);
 
+        //Set the navigation bar icon
+        bnv_j_groceryList_bottomNav.setSelectedItemId(R.id.groceryList);
+
         //Functions
         bottomNavOnNavItemSelectedListener();
     }

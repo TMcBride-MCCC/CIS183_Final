@@ -40,6 +40,9 @@ public class NewRecipeInstructions extends AppCompatActivity
         btn_j_newRecipeInstructions_doNotAddInstructions = findViewById(R.id.btn_v_newRecipeInstructions_doNotAddInstructions);
         bnv_j_newRecipeInstructions_bottomNav = findViewById(R.id.bnv_v_newRecipeInstructions_bottomNav);
 
+        //Set the navigation bar icon
+        bnv_j_newRecipeInstructions_bottomNav.setSelectedItemId(R.id.recipes);
+
         //Functions
         bottomNavOnNavItemSelectedListener();
         addInstructionsButtonClickListener();
