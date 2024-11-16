@@ -27,9 +27,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
     {
         db.execSQL("CREATE TABLE " + users_table_name + " (" +
                 "userID integer primary key autoincrement not null, " +
-                "pantryID integer, username varchar(50), " +
-                "password varchar(50), fname varchar(50), " +
-                "lname varchar(50), " +
+                "pantryID integer, " +
+                "username varchar(50), " +
+                "password varchar(50), " +
+                "fName varchar(50), " +
+                "lName varchar(50), " +
                 "email varchar(50), " +
                 "foreign key (pantryID) references " + pantry_table_name + " (pantryID)" +
                 ");");
@@ -79,7 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.execSQL("CREATE TABLE " + units_table_name + " (" +
                 "unitID integer primary key autoincrement not null, " +
                 "unitName varchar(50), " +
-                "abbv varchar(10)" +
+                "unitAbbv varchar(10)" +
                 ");");
     }
 
@@ -165,49 +167,157 @@ public class DatabaseHelper extends SQLiteOpenHelper
     //Initialize user table with dummy data
     private void initUsers()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(users_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + users_table_name + "(pantryID, username, password, fName, lName, email) VALUES ('1', 'tmcbride', 'password123', 'Tyler', 'McBride', 'tylersemail@email.com');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Initialize pantry table with dummy data
     private void initPantries()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(pantry_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + pantry_table_name + "(ingredientID, reocurring, stockQuantity, buyTrigger, unitID) VALUES ('1', '0', '12', '6', 'each');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Initialize recipe table with dummy data
     private void initRecipes()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(recipes_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Scrambled Eggs', 'Pretend directions are here', '0');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Initialize meal time table with dummy data
     private void initMealTimes()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(mealTime_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + mealTime_table_name + "(meaTime) VALUES ('Breakfast');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + "(meaTime) VALUES ('Lunch');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + "(meaTime) VALUES ('Dinner');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Initialize ingredients table with dummy data
     private void initIngredients()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(ingredients_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Eggs', '1');");
+            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Milk', '2');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Initialize category table with dummy data
     private void initCategories()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(category_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Misc');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Dairy');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Fruits');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Vegetables');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Poultry');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Red Meat');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Fish');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Grains');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Spices');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Condiments');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Beverages');");
+            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Baking');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Initialize recipe ingredients table with dummy data
     private void initRecipeIngredients()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(recipeIngredients_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '1', '4', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '2', '1', '2');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Initialize units table with dummy data
     private void initUnits()
     {
+        //If there are no records in the table currently....
+        if (countTableRecords(units_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
 
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Each', 'ea');");
+            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Teaspoon', 'tsp');");
+            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Tablespoon', 'tbsp');");
+            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Cup', 'cup');");
+            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Ounce', 'oz');");
+            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Pound', 'lb');");
+
+            //Close the database
+            db.close();
+        }
     }
 
     //Function used to count the records in a table
