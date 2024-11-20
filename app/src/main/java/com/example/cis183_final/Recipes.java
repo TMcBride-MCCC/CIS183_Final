@@ -2,6 +2,7 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class Recipes extends AppCompatActivity
     ListView lv_j_recipes_recipeList;
     Button btn_j_recipes_newRecipe;
     BottomNavigationView bnv_j_recipes_bottomNav;
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,9 +42,26 @@ public class Recipes extends AppCompatActivity
         //Set the navigation bar icon
         bnv_j_recipes_bottomNav.setSelectedItemId(R.id.recipes);
 
+        //DATABASE
+        //Make a new instance of the database
+        dbHelper = new DatabaseHelper(this);
+        //Initialize dummy data
+        dbHelper.initAllTables();
+        //Grab recipe data from the database
+        dbHelper.fillRecipeArrayList();
+
         //Functions
         bottomNavOnNavItemSelectedListener();
         newRecipeButtonClickListener();
+        fillListView();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        dbHelper.fillRecipeArrayList();
+        fillListView();
     }
 
     private void bottomNavOnNavItemSelectedListener()
@@ -90,5 +109,11 @@ public class Recipes extends AppCompatActivity
                 startActivity(new Intent(Recipes.this, NewRecipe.class));
             }
         });
+    }
+
+    private void fillListView()
+    {
+        lv_j_recipes_recipeList.setAdapter(RecipeList.getInstance().getRecipeListAdapter());
+        Log.d("Recipes filllistview()", "listview filled with " + RecipeList.getInstance().getRecipes().size());
     }
 }

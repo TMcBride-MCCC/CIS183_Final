@@ -42,6 +42,11 @@ public class RecipeList
         this.recipeListAdapter = adapter;
     }
 
+    public RecipeListAdapter getRecipeListAdapter()
+    {
+        return recipeListAdapter;
+    }
+
     public void addRecipe(Recipe recipeToAdd)
     {
         recipes.add(recipeToAdd);

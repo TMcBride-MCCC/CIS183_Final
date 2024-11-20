@@ -1,10 +1,13 @@
 package com.example.cis183_final;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper
 {
@@ -149,19 +152,19 @@ public class DatabaseHelper extends SQLiteOpenHelper
         initUsers();
         Log.d("initAllTables: ", "Total users in db: " + countTableRecords(users_table_name));
         initPantries();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(pantry_table_name));
+        Log.d("initAllTables: ", "Total pantries in db: " + countTableRecords(pantry_table_name));
         initRecipes();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(recipes_table_name));
+        Log.d("initAllTables: ", "Total recipes in db: " + countTableRecords(recipes_table_name));
         initMealTimes();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(mealTime_table_name));
+        Log.d("initAllTables: ", "Total mealTimes in db: " + countTableRecords(mealTime_table_name));
         initIngredients();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(ingredients_table_name));
+        Log.d("initAllTables: ", "Total ingredients in db: " + countTableRecords(ingredients_table_name));
         initCategories();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(category_table_name));
+        Log.d("initAllTables: ", "Total categories in db: " + countTableRecords(category_table_name));
         initRecipeIngredients();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(recipeIngredients_table_name));
+        Log.d("initAllTables: ", "Total recipeIngredients in db: " + countTableRecords(recipeIngredients_table_name));
         initUnits();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(units_table_name));
+        Log.d("initAllTables: ", "Total units in db: " + countTableRecords(units_table_name));
     }
 
     //Initialize user table with dummy data
@@ -191,7 +194,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data
-            db.execSQL("INSERT INTO " + pantry_table_name + "(ingredientID, reocurring, stockQuantity, buyTrigger, unitID) VALUES ('1', '0', '12', '6', 'each');");
+            db.execSQL("INSERT INTO " + pantry_table_name + "(ingredientID, reoccuring, stockQuantity, buyTrigger, unitID) VALUES ('1', '0', '12', '6', 'each');");
 
             //Close the database
             db.close();
@@ -225,9 +228,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data
-            db.execSQL("INSERT INTO " + mealTime_table_name + "(meaTime) VALUES ('Breakfast');");
-            db.execSQL("INSERT INTO " + mealTime_table_name + "(meaTime) VALUES ('Lunch');");
-            db.execSQL("INSERT INTO " + mealTime_table_name + "(meaTime) VALUES ('Dinner');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + "(mealTime) VALUES ('Breakfast');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + "(mealTime) VALUES ('Lunch');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + "(mealTime) VALUES ('Dinner');");
 
             //Close the database
             db.close();
@@ -330,5 +333,49 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.close();
 
         return numRows;
+    }
+
+    //Function used to copy recipe data from database to ArrayList
+    public void fillRecipeArrayList()
+    {
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to pull all recipes from recipe table
+        String selectQuery = "SELECT * FROM " + recipes_table_name;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor !=null)
+        {
+            //Move to first row
+            cursor.moveToFirst();
+
+            //For loop to move through the entire table
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                //Make a new recipe memory chunk
+                Recipe recipe = new Recipe();
+
+                //Set the info
+                recipe.setMealTimeId(cursor.getString(1));
+                recipe.setRecipeName(cursor.getString(2));
+                recipe.setInstructions(cursor.getString(3));
+                recipe.setMakeCount(cursor.getInt(4));
+
+                //Add the recipe data to RecipeList
+                RecipeList.getInstance().addRecipe(recipe);
+
+                //Debugging message
+                Log.d("DATABASE fillRecipeArrayList()", "Recipe " + (i +1) + ": " + recipe.getRecipeName());
+
+                //Move the cursor
+                cursor.moveToNext();
+            }
+
+            //Close the db
+            db.close();
+        }
+        //Log for total added
+        Log.d("fillRecipeArrayList() FINISHED", "Total Recipes added: " + RecipeList.getInstance().getRecipes().size());
     }
 }
