@@ -48,12 +48,16 @@ public class Recipes extends AppCompatActivity
         //Initialize dummy data
         dbHelper.initAllTables();
         //Grab recipe data from the database
-        dbHelper.fillRecipeArrayList();
+        //COMMENTED OUT BECAUSE IT WAS FILLING LIST TWICE
+        //WILL THIS WORK WITH ONLY onResume()?
+        //dbHelper.fillRecipeArrayList();
 
         //Functions
         bottomNavOnNavItemSelectedListener();
         newRecipeButtonClickListener();
-        fillListView();
+        //COMMENTED OUT BECAUSE IT WAS FILLING LIST TWICE
+        //WILL THIS WORK WITH ONLY onResume()?
+        //fillListView();
     }
 
     @Override
@@ -113,7 +117,16 @@ public class Recipes extends AppCompatActivity
 
     private void fillListView()
     {
-        lv_j_recipes_recipeList.setAdapter(RecipeList.getInstance().getRecipeListAdapter());
+        if (RecipeList.getInstance().getRecipeListAdapter() == null)
+        {
+            RecipeListAdapter adapter = new RecipeListAdapter(this, RecipeList.getInstance().getRecipes());
+            RecipeList.getInstance().setRecipeListAdapter(adapter);
+            lv_j_recipes_recipeList.setAdapter(adapter);
+        }
+        else
+        {
+            lv_j_recipes_recipeList.setAdapter(RecipeList.getInstance().getRecipeListAdapter());
+        }
         Log.d("Recipes filllistview()", "listview filled with " + RecipeList.getInstance().getRecipes().size());
     }
 }

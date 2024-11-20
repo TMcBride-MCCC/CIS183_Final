@@ -58,7 +58,7 @@ public class RecipeListAdapter extends BaseAdapter
         //Set the GUI
         //HOW DO I GET THE INGREDIENT COMPARISON EQUATION RESULT HERE?????
         recipeName.setText(recipe.getRecipeName());
-        recipeMealTime.setText(recipe.getRecipeName());
+        recipeMealTime.setText(recipe.getMealTimeId());
 
         return view;
     }

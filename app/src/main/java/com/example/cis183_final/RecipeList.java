@@ -1,5 +1,7 @@
 package com.example.cis183_final;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class RecipeList
@@ -40,10 +42,19 @@ public class RecipeList
     public void setRecipeListAdapter(RecipeListAdapter adapter)
     {
         this.recipeListAdapter = adapter;
+        notifyAdapterToRefresh();
     }
 
     public RecipeListAdapter getRecipeListAdapter()
     {
+        if (recipeListAdapter == null)
+        {
+            Log.d("RECIPELIST getRecipeListAdapter()", "recipeListAdapter is null");
+        }
+        else
+        {
+            notifyAdapterToRefresh();
+        }
         return recipeListAdapter;
     }
 
@@ -58,6 +69,10 @@ public class RecipeList
         if (recipeListAdapter != null)
         {
             recipeListAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            Log.d("RECIPELIST notifyAdapterToRefresh()", "recipeListAdapter is null");
         }
     }
 }
