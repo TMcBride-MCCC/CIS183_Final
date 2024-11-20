@@ -6,7 +6,7 @@ public class RecipeList
 {
     private static RecipeList recipeList;
     private ArrayList<Recipe> recipes;
-    private HomeListAdapter recipeListAdapter;
+    private RecipeListAdapter recipeListAdapter;
 
     private RecipeList()
     {
@@ -31,5 +31,28 @@ public class RecipeList
         return recipes;
     }
 
-    public void initRecipeList(ArrayList<>)
+    public void initRecipeList(ArrayList<Recipe> recipes)
+    {
+        this.recipes = recipes;
+        notifyAdapterToRefresh();
+    }
+
+    public void setRecipeListAdapter(RecipeListAdapter adapter)
+    {
+        this.recipeListAdapter = adapter;
+    }
+
+    public void addRecipe(Recipe recipeToAdd)
+    {
+        recipes.add(recipeToAdd);
+        notifyAdapterToRefresh();
+    }
+
+    public void notifyAdapterToRefresh()
+    {
+        if (recipeListAdapter != null)
+        {
+            recipeListAdapter.notifyDataSetChanged();
+        }
+    }
 }

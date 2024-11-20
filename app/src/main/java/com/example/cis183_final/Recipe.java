@@ -1,6 +1,8 @@
 package com.example.cis183_final;
 
-public class Recipe
+import java.io.Serializable;
+
+public class Recipe implements Serializable
 {
     String mealTimeId;
     String recipeName;
