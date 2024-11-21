@@ -371,6 +371,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
     //Function used to copy recipe data from database to ArrayList
     public void fillRecipeArrayList()
     {
+        //Delete the recipes from the ArrayList to prevent duplications
+        RecipeList.getInstance().getRecipes().clear();
+
         //Get a readable database copy
         SQLiteDatabase db = this.getReadableDatabase();
 

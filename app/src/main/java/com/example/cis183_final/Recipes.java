@@ -62,6 +62,7 @@ public class Recipes extends AppCompatActivity
     protected void onResume()
     {
         super.onResume();
+
         dbHelper.fillRecipeArrayList();
         fillListView();
     }
