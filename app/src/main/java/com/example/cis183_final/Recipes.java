@@ -45,8 +45,6 @@ public class Recipes extends AppCompatActivity
         //DATABASE
         //Make a new instance of the database
         dbHelper = new DatabaseHelper(this);
-        //Initialize dummy data
-        dbHelper.initAllTables();
         //Grab recipe data from the database
         //COMMENTED OUT BECAUSE IT WAS FILLING LIST TWICE
         //WILL THIS WORK WITH ONLY onResume()?
@@ -119,7 +117,7 @@ public class Recipes extends AppCompatActivity
     {
         if (RecipeList.getInstance().getRecipeListAdapter() == null)
         {
-            RecipeListAdapter adapter = new RecipeListAdapter(this, RecipeList.getInstance().getRecipes());
+            RecipeListAdapter adapter = new RecipeListAdapter(this, RecipeList.getInstance().getRecipes(), dbHelper);
             RecipeList.getInstance().setRecipeListAdapter(adapter);
             lv_j_recipes_recipeList.setAdapter(adapter);
         }

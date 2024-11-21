@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Recipe implements Serializable
 {
-    String mealTimeId;
+    int mealTimeId;
     String recipeName;
     String instructions;
     int makeCount;
@@ -14,7 +14,7 @@ public class Recipe implements Serializable
 
     }
 
-    public Recipe(String mt, String n, String i, int mc)
+    public Recipe(int mt, String n, String i, int mc)
     {
         mealTimeId = mt;
         recipeName = n;
@@ -26,7 +26,7 @@ public class Recipe implements Serializable
     //      GETTERS
     //====================================================
 
-    public String getMealTimeId()
+    public int getMealTimeId()
     {
         return mealTimeId;
     }
@@ -50,7 +50,7 @@ public class Recipe implements Serializable
     //      SETTERS
     //====================================================
 
-    public void setMealTimeId(String mealTimeId)
+    public void setMealTimeId(int mealTimeId)
     {
         this.mealTimeId = mealTimeId;
     }

@@ -13,11 +13,13 @@ public class RecipeListAdapter extends BaseAdapter
 {
     Context context;
     ArrayList<Recipe> listOfRecipes;
+    DatabaseHelper dbHelper;
 
-    public RecipeListAdapter(Context c, ArrayList<Recipe> ls)
+    public RecipeListAdapter(Context c, ArrayList<Recipe> ls, DatabaseHelper db)
     {
         context = c;
         listOfRecipes = ls;
+        dbHelper = db;
     }
     //Counts the number of records
     @Override
@@ -58,7 +60,7 @@ public class RecipeListAdapter extends BaseAdapter
         //Set the GUI
         //HOW DO I GET THE INGREDIENT COMPARISON EQUATION RESULT HERE?????
         recipeName.setText(recipe.getRecipeName());
-        recipeMealTime.setText(recipe.getMealTimeId());
+        recipeMealTime.setText(dbHelper.getMealTime(recipe.getMealTimeId()));
 
         return view;
     }

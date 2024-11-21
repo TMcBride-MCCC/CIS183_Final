@@ -357,7 +357,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 Recipe recipe = new Recipe();
 
                 //Set the info
-                recipe.setMealTimeId(cursor.getString(1));
+                recipe.setMealTimeId(cursor.getInt(1));
                 recipe.setRecipeName(cursor.getString(2));
                 recipe.setInstructions(cursor.getString(3));
                 recipe.setMakeCount(cursor.getInt(4));
@@ -377,5 +377,59 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
         //Log for total added
         Log.d("fillRecipeArrayList() FINISHED", "Total Recipes added: " + RecipeList.getInstance().getRecipes().size());
+    }
+
+    public String getMealTime(int mealTimeId)
+    {
+        String mealTime ="";
+
+        if (mealTimeExists(mealTimeId))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String selectMealTime = "SELECT mealTime FROM " + mealTime_table_name + " WHERE mealTimeID = '" + mealTimeId + "';";
+
+            Cursor cursor = db.rawQuery(selectMealTime, null);
+
+            if (cursor != null)
+            {
+                cursor.moveToFirst();
+                mealTime = cursor.getString(0);
+            }
+
+            db.close();
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getMealTime(): ", "There is no mealTime matching this ID: " + mealTime);
+        }
+
+        return mealTime;
+    }
+
+    public boolean mealTimeExists(int mealTimeId)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //String for the database query
+        String checkMealTimeId = "SELECT count(mealTimeID) FROM " + mealTime_table_name + " WHERE mealTimeID = '" + mealTimeId + "';";
+
+        //Run the query
+        Cursor cursor = db.rawQuery(checkMealTimeId, null);
+
+        cursor.moveToFirst();
+
+        int count = cursor.getInt(0);
+
+        db.close();
+
+        if (count !=0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
