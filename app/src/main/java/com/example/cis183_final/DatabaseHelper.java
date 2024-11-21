@@ -19,11 +19,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static final String ingredients_table_name = "Ingredients";
     private static final String category_table_name = "Category";
     private static final String recipeIngredients_table_name = "RecipeIngredients";
+    private static final String pantryIngredients_table_name = "PantryIngredients";
     private static final String units_table_name = "Units";
 
     public DatabaseHelper(Context c)
     {
-        super (c, database_name, null, 1);
+        super (c, database_name, null, 4);
     }
     @Override
     public void onCreate(SQLiteDatabase db)
@@ -40,14 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 ");");
         db.execSQL("CREATE TABLE " + pantry_table_name + " (" +
                 "pantryID integer primary key autoincrement not null, " +
-                "ingredientID integer, " +
-                "reoccuring integer, " +
-                "stockQuantity real, " +
-                "buyTrigger integer, " +
-                "reqAmount real, " +
-                "unitID integer, " +
-                "foreign key (ingredientID) references " + ingredients_table_name + " (ingredientID), " +
-                "foreign key (unitID) references " + units_table_name + " (unitID)" +
+                "houseName " +
                 ");");
         db.execSQL("CREATE TABLE " + recipes_table_name + " (" +
                 "recipeID integer primary key autoincrement not null, " +
@@ -81,6 +75,19 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 "foreign key (ingredientID) references " + ingredients_table_name + " (ingredientID), " +
                 "foreign key (recipeIngredientUnitID) references " + units_table_name + " (unitID)" +
                 ");");
+
+        db.execSQL("CREATE TABLE " + pantryIngredients_table_name + " (" +
+                "pantryIngredientID integer primary key autoincrement not null, " +
+                "pantryID integer, " +
+                "ingredientID integer, " +
+                "pantryIngredientStock integer, " +
+                "pantryIngredientBuyTrigger integer, " +
+                "pantryIngredientUnitID integer, " +
+                "foreign key (pantryID) references " + pantry_table_name + " (pantryID), " +
+                "foreign key (ingredientID) references " + ingredients_table_name + " (ingredientID), " +
+                "foreign key (pantryIngredientUnitID) references " + units_table_name + " (unitID) " +
+                ");");
+
         db.execSQL("CREATE TABLE " + units_table_name + " (" +
                 "unitID integer primary key autoincrement not null, " +
                 "unitName varchar(50), " +
@@ -99,6 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.execSQL("DROP TABLE IF EXISTS " + ingredients_table_name + ";");
         db.execSQL("DROP TABLE IF EXISTS " + category_table_name + ";");
         db.execSQL("DROP TABLE IF EXISTS " + recipeIngredients_table_name + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + pantryIngredients_table_name + ";");
         db.execSQL("DROP TABLE IF EXISTS " + units_table_name + ";");
 
         //Recreate Tables
@@ -141,6 +149,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return recipeIngredients_table_name;
     }
 
+    public String getPantryIngredientsDbName()
+    {
+        return pantryIngredients_table_name;
+    }
+
     public String getUnitsDbName()
     {
         return units_table_name;
@@ -163,6 +176,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
         Log.d("initAllTables: ", "Total categories in db: " + countTableRecords(category_table_name));
         initRecipeIngredients();
         Log.d("initAllTables: ", "Total recipeIngredients in db: " + countTableRecords(recipeIngredients_table_name));
+        initPantryIngredients();
+        Log.d("initAllTables: ", "Total pantryIngredients in db: " + countTableRecords(pantryIngredients_table_name));
         initUnits();
         Log.d("initAllTables: ", "Total units in db: " + countTableRecords(units_table_name));
     }
@@ -194,7 +209,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data
-            db.execSQL("INSERT INTO " + pantry_table_name + "(ingredientID, reoccuring, stockQuantity, buyTrigger, unitID) VALUES ('1', '0', '12', '6', 'each');");
+            db.execSQL("INSERT INTO " + pantry_table_name + "(houseName) VALUES ('McBride');");
 
             //Close the database
             db.close();
@@ -295,6 +310,24 @@ public class DatabaseHelper extends SQLiteOpenHelper
             //Insert dummy data
             db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '1', '4', '1');");
             db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '2', '1', '2');");
+
+            //Close the database
+            db.close();
+        }
+    }
+
+    //Initialize pantry ingredients table with dummy data
+    private void initPantryIngredients()
+    {
+        //If there are no records in the table currently....
+        if (countTableRecords(pantryIngredients_table_name) == 0)
+        {
+            //Get a writable version of the database
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            //Insert dummy data
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '1', '12', '6', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '2', '16', '8', '4');");
 
             //Close the database
             db.close();
@@ -432,4 +465,5 @@ public class DatabaseHelper extends SQLiteOpenHelper
             return false;
         }
     }
+
 }
