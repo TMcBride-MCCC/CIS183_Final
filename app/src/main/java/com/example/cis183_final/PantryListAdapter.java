@@ -59,6 +59,8 @@ public class PantryListAdapter extends BaseAdapter
         PantryIngredients pantryIngredient = listOfPantryIngredients.get(i);
 
         //Set the GUI
+        itemName.setText("IngredientId is: " + pantryIngredient.getIngredientId());
+
         //To get the categoryName we need to:
             //1. Set up the Ingredients class
             //2. Create a function in database to reference the Ingredients table categoryID to the Category Table and pull the name
