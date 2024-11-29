@@ -13,10 +13,10 @@ public class PantryListAdapter extends BaseAdapter
 {
 
     Context context;
-    ArrayList<PantryIngredients> listOfPantryIngredients;
+    ArrayList<PantryIngredient> listOfPantryIngredients;
     DatabaseHelper dbHelper;
 
-    public PantryListAdapter( Context c, ArrayList<PantryIngredients> ls, DatabaseHelper db)
+    public PantryListAdapter( Context c, ArrayList<PantryIngredient> ls, DatabaseHelper db)
     {
         context = c;
         listOfPantryIngredients = ls;
@@ -56,7 +56,7 @@ public class PantryListAdapter extends BaseAdapter
         TextView amountLeft = view.findViewById(R.id.tv_v_pantrylistview_amountLeft);
 
         //Get the data from the list
-        PantryIngredients pantryIngredient = listOfPantryIngredients.get(i);
+        PantryIngredient pantryIngredient = listOfPantryIngredients.get(i);
 
         //Set the GUI
         itemName.setText("IngredientId is: " + pantryIngredient.getIngredientId());

@@ -2,7 +2,7 @@ package com.example.cis183_final;
 
 import java.io.Serializable;
 
-public class PantryIngredients implements Serializable
+public class PantryIngredient implements Serializable
 {
     int pantryId;
     int ingredientId;
@@ -10,12 +10,12 @@ public class PantryIngredients implements Serializable
     int pantryIngredientBuyTrigger;
     int pantryIngredientUnitId;
 
-    public PantryIngredients()
+    public PantryIngredient()
     {
 
     }
 
-    public PantryIngredients(int pid, int iid, int s, int bt, int uid)
+    public PantryIngredient(int pid, int iid, int s, int bt, int uid)
     {
         pantryId = pid;
         ingredientId = iid;

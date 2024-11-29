@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class PantryIngredientList
 {
     private static PantryIngredientList pantryIngredientList;
-    private ArrayList<PantryIngredients> pantryIngredients;
+    private ArrayList<PantryIngredient> pantryIngredients;
     private PantryListAdapter pantryListAdapter;
 
     private PantryIngredientList()
@@ -26,12 +26,12 @@ public class PantryIngredientList
         return pantryIngredientList;
     }
 
-    public ArrayList<PantryIngredients> getPantryIngredients()
+    public ArrayList<PantryIngredient> getPantryIngredients()
     {
         return pantryIngredients;
     }
 
-    public void initPantryList(ArrayList<PantryIngredients> ls)
+    public void initPantryList(ArrayList<PantryIngredient> ls)
     {
         this.pantryIngredients = ls;
         notifyAdapterToRefresh();
@@ -56,7 +56,7 @@ public class PantryIngredientList
         return pantryListAdapter;
     }
 
-    public void addPantryIngredient(PantryIngredients ingredientToAdd)
+    public void addPantryIngredient(PantryIngredient ingredientToAdd)
     {
         pantryIngredients.add(ingredientToAdd);
         notifyAdapterToRefresh();
