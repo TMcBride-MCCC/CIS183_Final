@@ -126,6 +126,6 @@ public class Recipes extends AppCompatActivity
         {
             lv_j_recipes_recipeList.setAdapter(RecipeList.getInstance().getRecipeListAdapter());
         }
-        Log.d("Recipes filllistview()", "listview filled with " + RecipeList.getInstance().getRecipes().size());
+        Log.d("Recipes filllistview()", "listview filled with " + RecipeList.getInstance().getRecipes().size() + " recipes");
     }
 }

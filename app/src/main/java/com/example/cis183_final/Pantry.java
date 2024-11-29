@@ -104,4 +104,19 @@ public class Pantry extends AppCompatActivity
         });
     }
 
+    private void fillListView()
+    {
+        if (PantryIngredientList.getInstance().getPantryListAdapter() == null)
+        {
+            PantryListAdapter adapter = new PantryListAdapter(this, PantryIngredientList.getInstance().getPantryIngredients(), dbHelper);
+            PantryIngredientList.getInstance().setPantryListAdapter(adapter);
+            lv_j_pantry_listOfIngredients.setAdapter(adapter);
+        }
+        else
+        {
+            lv_j_pantry_listOfIngredients.setAdapter(PantryIngredientList.getInstance().getPantryListAdapter());
+        }
+
+        Log.d("Pantry filllistview()", "listview filled with " + PantryIngredientList.getInstance().getPantryIngredients().size() + " ingredients");
+    }
 }
