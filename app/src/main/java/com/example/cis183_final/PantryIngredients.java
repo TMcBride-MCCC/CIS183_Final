@@ -9,7 +9,7 @@ public class PantryIngredients implements Serializable
     int pantryIngredientStock;
     int pantryIngredientBuyTrigger;
     int pantryIngredientUnitId;
-    
+
     public PantryIngredients()
     {
 
