@@ -61,6 +61,7 @@ public class RecipeListAdapter extends BaseAdapter
         //HOW DO I GET THE INGREDIENT COMPARISON EQUATION RESULT HERE?????
         recipeName.setText(recipe.getRecipeName());
         recipeMealTime.setText(dbHelper.getMealTime(recipe.getMealTimeId()));
+        numIngredients.setText(String.valueOf(dbHelper.getNumRecipeIngredients(dbHelper.getRecipeId(recipe.recipeName))));
 
         return view;
     }

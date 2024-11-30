@@ -419,6 +419,110 @@ public class DatabaseHelper extends SQLiteOpenHelper
         Log.d("fillRecipeArrayList() FINISHED", "Total Recipes added: " + RecipeList.getInstance().getRecipes().size());
     }
 
+    public boolean recipeNameExists(String recipeNameThatWasPassed)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //String for the database query
+        String checkRecipeName = "SELECT count(recipeName) FROM " + recipes_table_name + " WHERE recipeName = '" + recipeNameThatWasPassed + "';";
+
+        //Run the query
+        Cursor cursor = db.rawQuery(checkRecipeName, null);
+
+        cursor.moveToFirst();
+
+        int count = cursor.getInt(0);
+
+        db.close();
+
+        if (count != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public int getRecipeId(String recipeNameThatWasPassed)
+    {
+        int recipeId = -1;
+
+        if (recipeNameExists(recipeNameThatWasPassed))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String selectRecipeId = "SELECT recipeID FROM " + recipes_table_name + " WHERE recipeName = '" + recipeNameThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(selectRecipeId,null);
+
+            if (cursor !=null)
+            {
+                cursor.moveToFirst();
+                recipeId = cursor.getInt(0);
+            }
+
+            db.close();
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getRecipeId(): ", "There is no recipeName matching this name: " + recipeNameThatWasPassed);
+        }
+
+        return recipeId;
+    }
+
+    public boolean recipeIdExists(int recipeIdThatWasPassed)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //String for the database query
+        String checkRecipeId = "SELECT count(recipeID) FROM " + recipes_table_name + " WHERE recipeID = '" + recipeIdThatWasPassed + "';";
+
+        //Run the query
+        Cursor cursor = db.rawQuery(checkRecipeId, null);
+
+        cursor.moveToFirst();
+
+        int count = cursor.getInt(0);
+
+        db.close();
+
+        if (count !=0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public int getNumRecipeIngredients(int recipeIdThatWasPassed)
+    {
+        int numIngredients = -1;
+
+        if (recipeIdExists(recipeIdThatWasPassed))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String countIngredients = "SELECT count(recipeIngredientID) FROM " + recipeIngredients_table_name + " WHERE recipeID = '" + recipeIdThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(countIngredients,null);
+
+            cursor.moveToFirst();
+
+            numIngredients = cursor.getInt(0);
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getNumRecipeIngredients(): ", "There is no recipeID matching this ID: " + recipeIdThatWasPassed);
+        }
+
+        return numIngredients;
+    }
+
     public String getMealTime(int mealTimeId)
     {
         String mealTime ="";
