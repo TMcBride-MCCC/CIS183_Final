@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public DatabaseHelper(Context c)
     {
-        super (c, database_name, null, 4);
+        super (c, database_name, null, 5);
     }
     @Override
     public void onCreate(SQLiteDatabase db)
@@ -227,6 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
             //Insert dummy data
             db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Scrambled Eggs', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Jumbo Scrambled Eggs', 'Pretend directions are here', '0');");
 
             //Close the database
             db.close();
@@ -310,6 +311,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
             //Insert dummy data
             db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '1', '4', '1');");
             db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '2', '1', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('2', '1', '16', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('2', '2', '4', '2');");
 
             //Close the database
             db.close();
@@ -508,6 +511,34 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getReadableDatabase();
 
             String countIngredients = "SELECT count(recipeIngredientID) FROM " + recipeIngredients_table_name + " WHERE recipeID = '" + recipeIdThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(countIngredients,null);
+
+            cursor.moveToFirst();
+
+            numIngredients = cursor.getInt(0);
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getNumRecipeIngredients(): ", "There is no recipeID matching this ID: " + recipeIdThatWasPassed);
+        }
+
+        return numIngredients;
+    }
+
+    public int getNumRecipeIngredientsInPantry(int recipeIdThatWasPassed)
+    {
+        int numIngredients = -1;
+
+        if (recipeIdExists(recipeIdThatWasPassed))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String countIngredients = "SELECT count(*) FROM " + recipeIngredients_table_name +
+                    " LEFT JOIN " + pantryIngredients_table_name +
+                    " ON " + recipeIngredients_table_name + ".ingredientID = " + pantryIngredients_table_name + ".ingredientID" +
+                    " WHERE " + recipeIngredients_table_name + ".recipeID = " + recipeIdThatWasPassed +
+                    " AND " + pantryIngredients_table_name + ".pantryIngredientStock >= " + recipeIngredients_table_name + ".recipeIngredientQuantity;";
 
             Cursor cursor = db.rawQuery(countIngredients,null);
 
