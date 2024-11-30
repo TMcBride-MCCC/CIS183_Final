@@ -560,9 +560,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
         {
             SQLiteDatabase db = this.getReadableDatabase();
 
-            String selectMealTime = "SELECT ingredientName FROM " + ingredients_table_name + " WHERE ingredientID = '" + ingredientIdThatWasPassed + "';";
+            String selectIngredientName = "SELECT ingredientName FROM " + ingredients_table_name + " WHERE ingredientID = '" + ingredientIdThatWasPassed + "';";
 
-            Cursor cursor = db.rawQuery(selectMealTime, null);
+            Cursor cursor = db.rawQuery(selectIngredientName, null);
 
             if (cursor != null)
             {
@@ -574,11 +574,119 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
         else
         {
-            Log.d("ERROR IN DATABASE getIngredientName(): ", "There is no ingredientName matching this ID: " + ingredientIdThatWasPassed);
+            Log.d("ERROR IN DATABASE getIngredientName(): ", "There is no ingredientID matching this ID: " + ingredientIdThatWasPassed);
         }
 
         return ingredientName;
     }
 
+    public int getIngredientCategoryID(int ingredientIdThatWasPassed)
+    {
+        int categoryId = 10;
 
+        if (ingredientIdExists(ingredientIdThatWasPassed))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String selectCategoryId = "SELECT categoryID FROM " + ingredients_table_name + " WHERE ingredientID = '" + ingredientIdThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(selectCategoryId, null);
+
+            if (cursor != null)
+            {
+                cursor.moveToFirst();
+                categoryId = cursor.getInt(0);
+            }
+
+            db.close();
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getIngredientCategoryID(): ", "There is no ingredientID matching this ID: " + ingredientIdThatWasPassed);
+        }
+
+        return categoryId;
+    }
+
+    public boolean categoryIdExists(int categoryIdThatWasPassed)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //String for the database query
+        String checkCategoryId = "SELECT count(categoryID) FROM " + category_table_name + " WHERE categoryID = '" + categoryIdThatWasPassed + "';";
+
+        //Run the query
+        Cursor cursor = db.rawQuery(checkCategoryId, null);
+
+        cursor.moveToFirst();
+
+        int count = cursor.getInt(0);
+
+        db.close();
+
+        if (count !=0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public String getIngredientCategoryName(int categoryIdThatWasPassed)
+    {
+        String categoryName = "";
+
+        if (categoryIdExists(categoryIdThatWasPassed))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String selectCategoryName = "SELECT categoryName FROM " + category_table_name + " WHERE categoryID = '" + categoryIdThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(selectCategoryName, null);
+
+            if (cursor != null)
+            {
+                cursor.moveToFirst();
+                categoryName = cursor.getString(0);
+            }
+
+            db.close();
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getIngredientCategoryName(): ", "There is no categoryID matching this ID: " + categoryIdThatWasPassed);
+        }
+
+        return categoryName;
+    }
+
+    public int getIngredientStock(int ingredientIdThatWasPassed)
+    {
+        int stock = 999;
+
+        if (ingredientIdExists(ingredientIdThatWasPassed))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String selectStock = "SELECT pantryIngredientStock FROM " + pantryIngredients_table_name + " WHERE ingredientID = '" + ingredientIdThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(selectStock, null);
+
+            if (cursor != null)
+            {
+                cursor.moveToFirst();
+                stock = cursor.getInt(0);
+            }
+
+            db.close();
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getIngredientStock(): ", "There is no ingredientID matching this ID: " + ingredientIdThatWasPassed);
+        }
+
+        return stock;
+    }
 }

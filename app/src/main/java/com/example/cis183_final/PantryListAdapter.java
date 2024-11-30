@@ -58,18 +58,15 @@ public class PantryListAdapter extends BaseAdapter
         //Get the data from the list
         PantryIngredient pantryIngredient = listOfPantryIngredients.get(i);
 
-        //Set the GUI
-        categoryName.setText(dbHelper.getIngredientName(pantryIngredient.getIngredientId()));
-        itemName.setText(dbHelper.getIngredientName(pantryIngredient.getIngredientId()));
-
         //To get the categoryName we need to:
             //1. Set up the Ingredients class
             //2. Create a function in database to reference the Ingredients table categoryID to the Category Table and pull the name
             //3. Create a function in database to reference the PantryIngredients table ingredientID to the Ingredient table
-        //To get the Item Name we need to:
-            //1. Get the PantryIngredients ingredientId
-            //2.
 
+        //Set the GUI
+        categoryName.setText(dbHelper.getIngredientCategoryName(dbHelper.getIngredientCategoryID(pantryIngredient.getIngredientId())));
+        itemName.setText(dbHelper.getIngredientName(pantryIngredient.getIngredientId()));
+        amountLeft.setText(String.valueOf(dbHelper.getIngredientStock(pantryIngredient.getIngredientId())));
 
         return view;
     }
