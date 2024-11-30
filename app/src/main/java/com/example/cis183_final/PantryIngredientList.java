@@ -64,7 +64,7 @@ public class PantryIngredientList
 
     public void notifyAdapterToRefresh()
     {
-        if (pantryIngredientList != null)
+        if (pantryListAdapter != null)
         {
             pantryListAdapter.notifyDataSetChanged();
         }

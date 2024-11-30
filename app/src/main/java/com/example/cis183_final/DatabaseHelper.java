@@ -525,4 +525,60 @@ public class DatabaseHelper extends SQLiteOpenHelper
         //Log for total added
         Log.d("fillPantryIngredientsArrayList() FINISHED", "Total Recipes added: " + PantryIngredientList.getInstance().getPantryIngredients().size());
     }
+
+    public boolean ingredientIdExists(int ingredientIdThatWasPassed)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //String for the database query
+        String checkIngredientId = "SELECT count(ingredientID) FROM " + ingredients_table_name + " WHERE ingredientID = '" + ingredientIdThatWasPassed + "';";
+
+        //Run the query
+        Cursor cursor = db.rawQuery(checkIngredientId, null);
+
+        cursor.moveToFirst();
+
+        int count = cursor.getInt(0);
+
+        db.close();
+
+        if (count !=0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public String getIngredientName(int ingredientIdThatWasPassed)
+    {
+        String ingredientName ="";
+
+        if (ingredientIdExists(ingredientIdThatWasPassed))
+        {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            String selectMealTime = "SELECT ingredientName FROM " + ingredients_table_name + " WHERE ingredientID = '" + ingredientIdThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(selectMealTime, null);
+
+            if (cursor != null)
+            {
+                cursor.moveToFirst();
+                ingredientName = cursor.getString(0);
+            }
+
+            db.close();
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getIngredientName(): ", "There is no ingredientName matching this ID: " + ingredientIdThatWasPassed);
+        }
+
+        return ingredientName;
+    }
+
+
 }

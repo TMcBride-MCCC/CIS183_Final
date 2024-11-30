@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,31 +9,38 @@
         android:id="@+id/tv_v_pantrylistview_categoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
         android:text="Category"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="21dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_v_pantrylistview_itemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="66dp"
         android:text="Item Name"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="93dp"
         android:text="Amount Left:"
-        tools:layout_editor_absoluteX="237dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_v_pantrylistview_amountLeft"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tv_v_pantrylistview_amountLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="66dp"
         android:text="02"
-        tools:layout_editor_absoluteX="327dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
