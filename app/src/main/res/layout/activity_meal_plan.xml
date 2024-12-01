@@ -11,25 +11,24 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="DINNER"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hsv_v_mealPlan_lunch" />
+        tools:layout_editor_absoluteY="494dp" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="188dp"
         android:text="LUNCH"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hsv_v_mealPlan_breakfast" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_v_mealPlan_bottomNav"
@@ -65,301 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_v_mealPlan_day" />
 
-    <HorizontalScrollView
-        android:id="@+id/hsv_v_mealPlan_breakfast"
-        android:layout_width="409dp"
-        android:layout_height="170dp"
-        android:fillViewport="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_breakfast1"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_breakfast1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Eggs &amp; Toast"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_breakfast2"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_breakfast2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Pancakes"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_breakfast3"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_breakfast3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Waffles"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_breakfast4"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_breakfast4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Cereal"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_breakfast5"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_breakfast5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="PB Toast"/>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <HorizontalScrollView
-        android:id="@+id/hsv_v_mealPlan_lunch"
-        android:layout_width="409dp"
-        android:layout_height="170dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_lunch1"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_lunch1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Eggs &amp; Toast"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_lunch2"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_lunch2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Pancakes"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_lunch3"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_lunch3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Waffles"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_lunch4"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_lunch4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Cereal"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_lunch5"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_lunch5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="PB Toast"/>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <HorizontalScrollView
-        android:id="@+id/hsv_v_mealPlan_dinner"
-        android:layout_width="409dp"
-        android:layout_height="170dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_dinner1"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_dinner1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Eggs &amp; Toast"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_dinner2"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_dinner2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Pancakes"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_dinner3"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_dinner3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Waffles"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_dinner4"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_dinner4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Cereal"/>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_v_mealPlan_dinner5"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <TextView
-                    android:id="@+id/tv_v_mealPlan_dinner5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="PB Toast"/>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </HorizontalScrollView>
-
     <Button
         android:id="@+id/btn_v_mealPlan_submit"
         android:layout_width="wrap_content"
@@ -371,4 +75,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_v_mealPlan_breakfast"
+        android:layout_width="375dp"
+        android:layout_height="166dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 </androidx.constraintlayout.widget.ConstraintLayout>
