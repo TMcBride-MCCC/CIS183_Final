@@ -89,6 +89,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_breakfast1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -104,6 +105,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_breakfast2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -119,6 +121,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_breakfast3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -134,6 +137,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_breakfast4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -149,6 +153,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_breakfast5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -182,6 +187,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_lunch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -197,6 +203,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_lunch2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -212,6 +219,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_lunch3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -227,6 +235,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_lunch4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -242,6 +251,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_lunch5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -275,6 +285,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_dinner1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -290,6 +301,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_dinner2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -305,6 +317,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_dinner3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -320,6 +333,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_dinner4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -335,6 +349,7 @@
                 app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/tv_v_mealPlan_dinner5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
