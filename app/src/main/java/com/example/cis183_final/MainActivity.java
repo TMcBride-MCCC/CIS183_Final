@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
                 //If the user is the first in the household to make an account this will be filled out
                 String newHouseName = et_j_main_newPantryHouseName.getText().toString();
                 //If the user is not the first in the household to make an account the spinner will have a value
-                String existingHouseName = sp_j_main_households.toString();
+                String existingHouseName = sp_j_main_households.getSelectedItem().toString();
 
 
                 if (!username.isEmpty() && !password.isEmpty() && !fName.isEmpty() && !lName.isEmpty() && !email.isEmpty())
