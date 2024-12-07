@@ -654,11 +654,29 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
     //Function used to log in user
-    public void signInUser()
+    public String verifyUsersPassword(String usernameThatWasPassed, String passwordThatWasPassed)
     {
+        String password = "";
+
         //Get a readable database copy
         SQLiteDatabase db = this.getReadableDatabase();
 
+        //Query
+        String selectPassword = "SELECT password FROM " + users_table_name + " WHERE username = '" + usernameThatWasPassed + "';";
+
+        Cursor cursor = db.rawQuery(selectPassword,null);
+
+        if (cursor !=null && cursor.moveToFirst())
+        {
+            cursor.moveToFirst();
+            password = cursor.getString(0);
+        }
+        else
+        {
+            Log.d("DATABASE verifyUsersPassword()","Cursor came back null");
+        }
+
+        return password;
     }
 
     public ArrayList<String> getAllUsernames()

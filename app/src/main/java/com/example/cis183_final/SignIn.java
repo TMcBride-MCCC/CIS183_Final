@@ -2,6 +2,9 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +23,9 @@ public class SignIn extends AppCompatActivity
     EditText et_j_signIn_password;
     Button btn_j_signIn_signIn;
     TextView tv_j_signIn_signUp;
+    TextView tv_j_signIn_signInError;
+    TextView tv_j_signIn_allFieldsError;
+    boolean validLogin = false;
     DatabaseHelper dbHelper;
 
     @Override
@@ -34,6 +40,12 @@ public class SignIn extends AppCompatActivity
         et_j_signIn_password = findViewById(R.id.et_v_signIn_password);
         btn_j_signIn_signIn = findViewById(R.id.btn_v_signIn_signIn);
         tv_j_signIn_signUp = findViewById(R.id.tv_v_signIn_signUp);
+        tv_j_signIn_signInError = findViewById(R.id.tv_v_signIn_signInError);
+        tv_j_signIn_allFieldsError = findViewById(R.id.tv_v_signIn_allFieldsError);
+
+        //Hide the error messages
+        tv_j_signIn_signInError.setVisibility(View.INVISIBLE);
+        tv_j_signIn_allFieldsError.setVisibility(View.INVISIBLE);
 
         //DATABASE
         //Make a new instance of the database
@@ -42,6 +54,58 @@ public class SignIn extends AppCompatActivity
         //Functions
         signInButtonClickListener();
         signUpTextOnClickListener();
+        usernameTextChangeListener();
+        passwordTextChangedListener();
+    }
+
+    private void usernameTextChangeListener()
+    {
+        et_j_signIn_username.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                tv_j_signIn_signInError.setVisibility(View.INVISIBLE);
+                tv_j_signIn_allFieldsError.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+    }
+
+    private void passwordTextChangedListener()
+    {
+        et_j_signIn_password.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                tv_j_signIn_signInError.setVisibility(View.INVISIBLE);
+                tv_j_signIn_allFieldsError.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
     }
 
     private void signInButtonClickListener()
@@ -51,7 +115,26 @@ public class SignIn extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(SignIn.this, HomePage.class));
+                String username = et_j_signIn_username.getText().toString();
+                String password = et_j_signIn_password.getText().toString();
+
+                if (!username.isEmpty() && !password.isEmpty())
+                {
+                    if (password.equals(dbHelper.verifyUsersPassword(username,password)))
+                    {
+                        Log.d("SUCCESS","VALID LOG IN");
+                        tv_j_signIn_signInError.setVisibility(View.INVISIBLE);
+                    }
+                    else
+                    {
+                        tv_j_signIn_signInError.setVisibility(View.VISIBLE);
+                    }
+                }
+                else
+                {
+                    tv_j_signIn_allFieldsError.setVisibility(View.VISIBLE);
+                }
+
             }
         });
     }
