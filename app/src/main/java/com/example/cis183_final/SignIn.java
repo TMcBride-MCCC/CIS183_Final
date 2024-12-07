@@ -20,6 +20,7 @@ public class SignIn extends AppCompatActivity
     EditText et_j_signIn_password;
     Button btn_j_signIn_signIn;
     TextView tv_j_signIn_signUp;
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +34,10 @@ public class SignIn extends AppCompatActivity
         et_j_signIn_password = findViewById(R.id.et_v_signIn_password);
         btn_j_signIn_signIn = findViewById(R.id.btn_v_signIn_signIn);
         tv_j_signIn_signUp = findViewById(R.id.tv_v_signIn_signUp);
+
+        //DATABASE
+        //Make a new instance of the database
+        dbHelper = new DatabaseHelper(this);
 
         //Functions
         signInButtonClickListener();

@@ -163,23 +163,23 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void initAllTables()
     {
         initUsers();
-        Log.d("initAllTables: ", "Total users in db: " + countTableRecords(users_table_name));
+        //Log.d("initAllTables: ", "Total users in db: " + countTableRecords(users_table_name));
         initPantries();
-        Log.d("initAllTables: ", "Total pantries in db: " + countTableRecords(pantry_table_name));
+        //Log.d("initAllTables: ", "Total pantries in db: " + countTableRecords(pantry_table_name));
         initRecipes();
-        Log.d("initAllTables: ", "Total recipes in db: " + countTableRecords(recipes_table_name));
+        //Log.d("initAllTables: ", "Total recipes in db: " + countTableRecords(recipes_table_name));
         initMealTimes();
-        Log.d("initAllTables: ", "Total mealTimes in db: " + countTableRecords(mealTime_table_name));
+        //Log.d("initAllTables: ", "Total mealTimes in db: " + countTableRecords(mealTime_table_name));
         initIngredients();
-        Log.d("initAllTables: ", "Total ingredients in db: " + countTableRecords(ingredients_table_name));
+        //Log.d("initAllTables: ", "Total ingredients in db: " + countTableRecords(ingredients_table_name));
         initCategories();
-        Log.d("initAllTables: ", "Total categories in db: " + countTableRecords(category_table_name));
+        //Log.d("initAllTables: ", "Total categories in db: " + countTableRecords(category_table_name));
         initRecipeIngredients();
-        Log.d("initAllTables: ", "Total recipeIngredients in db: " + countTableRecords(recipeIngredients_table_name));
+        //Log.d("initAllTables: ", "Total recipeIngredients in db: " + countTableRecords(recipeIngredients_table_name));
         initPantryIngredients();
-        Log.d("initAllTables: ", "Total pantryIngredients in db: " + countTableRecords(pantryIngredients_table_name));
+        //Log.d("initAllTables: ", "Total pantryIngredients in db: " + countTableRecords(pantryIngredients_table_name));
         initUnits();
-        Log.d("initAllTables: ", "Total units in db: " + countTableRecords(units_table_name));
+        //Log.d("initAllTables: ", "Total units in db: " + countTableRecords(units_table_name));
     }
 
     //Initialize user table with dummy data
@@ -192,7 +192,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data
-            db.execSQL("INSERT INTO " + users_table_name + "(pantryID, username, password, fName, lName, email) VALUES ('1', 'tmcbride', 'password123', 'Tyler', 'McBride', 'tylersemail@email.com');");
+            db.execSQL("INSERT INTO " + users_table_name + " (pantryID, username, password, fName, lName, email) VALUES ('1', 'tmcbride', 'password123', 'Tyler', 'McBride', 'tylersemail@email.com');");
 
             //Close the database
             db.close();
@@ -209,7 +209,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data
-            db.execSQL("INSERT INTO " + pantry_table_name + "(houseName) VALUES ('McBride');");
+            db.execSQL("INSERT INTO " + pantry_table_name + " (houseName) VALUES ('McBride');");
 
             //Close the database
             db.close();
@@ -227,21 +227,21 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
             //Insert dummy data
             //1 = breakfast | 2= lunch | 3 = dinner
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Scrambled Eggs', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Jumbo Scrambled Eggs', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Pancakes', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Breakfast Burritos (Bacon)', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Breakfast Burritos (Sausage)', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Grilled Cheese Sandwich', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chicken & Salami Sandwich', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chicken Sandwich', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chili Cheese Hotdogs', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chili Cheese Turkey Hotdogs', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Tacos (Beef)', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Tacos (Turkey)', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Garlic Fried Chicken', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Cheese Burgers (Beef)', 'Pretend directions are here', '0');");
-            db.execSQL("INSERT INTO " + recipes_table_name + "(mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Cheese Burgers (Turkey)', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Scrambled Eggs', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Jumbo Scrambled Eggs', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Pancakes', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Breakfast Burritos (Bacon)', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('1', 'Breakfast Burritos (Sausage)', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Grilled Cheese Sandwich', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chicken & Salami Sandwich', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chicken Sandwich', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chili Cheese Hotdogs', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('2', 'Chili Cheese Turkey Hotdogs', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Tacos (Beef)', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Tacos (Turkey)', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Garlic Fried Chicken', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Cheese Burgers (Beef)', 'Pretend directions are here', '0');");
+            db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) VALUES ('3', 'Cheese Burgers (Turkey)', 'Pretend directions are here', '0');");
 
 
             //Close the database
@@ -259,9 +259,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data
-            db.execSQL("INSERT INTO " + mealTime_table_name + "(mealTime) VALUES ('Breakfast');");
-            db.execSQL("INSERT INTO " + mealTime_table_name + "(mealTime) VALUES ('Lunch');");
-            db.execSQL("INSERT INTO " + mealTime_table_name + "(mealTime) VALUES ('Dinner');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + " (mealTime) VALUES ('Breakfast');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + " (mealTime) VALUES ('Lunch');");
+            db.execSQL("INSERT INTO " + mealTime_table_name + " (mealTime) VALUES ('Dinner');");
 
             //Close the database
             db.close();
@@ -278,47 +278,47 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data                                                                                                                 //ID
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Eggs', '1');");                         //1
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Milk', '2');");                         //2
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Flour', '12');");                       //3
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Baking Powder', '12');");               //4
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Salt', '9');");                         //5
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('White Sugar', '9');");                  //6
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Brown Sugar', '9');");                  //7
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Butter', '2');");                       //8
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Bacon', '6');");                        //9
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Sausage', '6');");                      //10
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Vegetable Oil', '12');");               //11
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Flour Tortillas', '8');");              //12
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Salsa', '10');");                       //13
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Black Pepper', '9');");                 //14
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Shredded Cheddar', '2');");             //15
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Garlic Salt', '9');");                  //16
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Frozen Hash Browns', '4');");           //17
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Breakfast Sausage', '4');");            //18
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Bread', '8');");                        //19
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('American Cheese Slice', '2');");        //20
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Butter', '2');");                       //21
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Deli Chicken Slice', '5');");           //22
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Deli Salami Slice', '6');");            //23
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('PepperJack Cheese Slice', '2');");      //24
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Hotdog Bun', '8');");                   //25
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Pork Hotdog', '6');");                  //26
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Hormel Chilli (Beef)', '6');");         //27
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Turkey Hotdog', '5');");                //28
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Hormel Chilli (Turkey)', '5');");       //29
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Ground Beef', '6');");                  //30
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Ground Turkey', '6');");                //31
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Taco Seasoning', '9');");               //32
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Shredded Mexican Cheese', '6');");      //33
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Lettuce (Head)', '4');");               //34
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Taco Sauce', '10');");                  //35
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Garlic Powder', '9');");                //36
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Paprika', '9');");                      //37
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Bread Crumbs', '8');");                 //38
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Chicken Breast', '5');");               //39
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Hamburger Bun', '8');");                //40
-            db.execSQL("INSERT INTO " + ingredients_table_name + "(ingredientName, categoryID) VALUES ('Hamburger Seasoning', '9');");          //41
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Eggs', '1');");                         //1
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Milk', '2');");                         //2
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Flour', '12');");                       //3
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Baking Powder', '12');");               //4
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Salt', '9');");                         //5
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('White Sugar', '9');");                  //6
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Brown Sugar', '9');");                  //7
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Butter', '2');");                       //8
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Bacon', '6');");                        //9
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Sausage', '6');");                      //10
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Vegetable Oil', '12');");               //11
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Flour Tortillas', '8');");              //12
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Salsa', '10');");                       //13
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Black Pepper', '9');");                 //14
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Shredded Cheddar', '2');");             //15
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Garlic Salt', '9');");                  //16
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Frozen Hash Browns', '4');");           //17
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Breakfast Sausage', '4');");            //18
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Bread', '8');");                        //19
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('American Cheese Slice', '2');");        //20
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Butter', '2');");                       //21
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Deli Chicken Slice', '5');");           //22
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Deli Salami Slice', '6');");            //23
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('PepperJack Cheese Slice', '2');");      //24
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Hotdog Bun', '8');");                   //25
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Pork Hotdog', '6');");                  //26
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Hormel Chilli (Beef)', '6');");         //27
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Turkey Hotdog', '5');");                //28
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Hormel Chilli (Turkey)', '5');");       //29
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Ground Beef', '6');");                  //30
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Ground Turkey', '6');");                //31
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Taco Seasoning', '9');");               //32
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Shredded Mexican Cheese', '6');");      //33
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Lettuce (Head)', '4');");               //34
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Taco Sauce', '10');");                  //35
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Garlic Powder', '9');");                //36
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Paprika', '9');");                      //37
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Bread Crumbs', '8');");                 //38
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Chicken Breast', '5');");               //39
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Hamburger Bun', '8');");                //40
+            db.execSQL("INSERT INTO " + ingredients_table_name + " (ingredientName, categoryID) VALUES ('Hamburger Seasoning', '9');");          //41
 
 
 
@@ -338,18 +338,18 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data                                                                                                         //ID
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Misc');");                                       //1
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Dairy');");                                      //2
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Fruits');");                                     //3
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Vegetables');");                                 //4
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Poultry');");                                    //5
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Red Meat');");                                   //6
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Fish');");                                       //7
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Grains');");                                     //8
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Spices');");                                     //9
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Condiments');");                                 //10
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Beverages');");                                  //11
-            db.execSQL("INSERT INTO " + category_table_name + "(categoryName) VALUES ('Baking');");                                     //12
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Misc');");                                       //1
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Dairy');");                                      //2
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Fruits');");                                     //3
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Vegetables');");                                 //4
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Poultry');");                                    //5
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Red Meat');");                                   //6
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Fish');");                                       //7
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Grains');");                                     //8
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Spices');");                                     //9
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Condiments');");                                 //10
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Beverages');");                                  //11
+            db.execSQL("INSERT INTO " + category_table_name + " (categoryName) VALUES ('Baking');");                                     //12
 
             //Close the database
             db.close();
@@ -367,39 +367,39 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
             //Insert dummy data
             //1-5 = Breakfast
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '1', '4', '1');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '2', '1', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('2', '1', '16', '1');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('2', '2', '4', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '3', '1 1/2', '4');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '4', '3 1/2', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '6', '1', '3');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '5', '1/4', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '2', '1 1/4', '4');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '8', '3', '3');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '1', '1', '1');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '1', '10', '1');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '9', '12', '5');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '2', '3', '3');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '5', '1/4', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '11', '3', '3');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '17', '4', '4');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '16', '1/2', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '14', '1/4', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '12', '10', '1');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '15', '1 1/2', '4');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '13', '1', '4');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '1', '10', '1');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '18', '12', '5');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '2', '3', '3');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '5', '1/4', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '11', '3', '3');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '17', '4', '4');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '16', '1/2', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '14', '1/4', '2');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '12', '10', '1');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '15', '1 1/2', '4');");
-            db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '13', '1', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '1', '4', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('1', '2', '1', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('2', '1', '16', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('2', '2', '4', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '3', '1 1/2', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '4', '3 1/2', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '6', '1', '3');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '5', '1/4', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '2', '1 1/4', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '8', '3', '3');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('3', '1', '1', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '1', '10', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '9', '12', '5');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '2', '3', '3');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '5', '1/4', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '11', '3', '3');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '17', '4', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '16', '1/2', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '14', '1/4', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '12', '10', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '15', '1 1/2', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('4', '13', '1', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '1', '10', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '18', '12', '5');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '2', '3', '3');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '5', '1/4', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '11', '3', '3');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '17', '4', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '16', '1/2', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '14', '1/4', '2');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '12', '10', '1');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '15', '1 1/2', '4');");
+            db.execSQL("INSERT INTO " + recipeIngredients_table_name + " (recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('5', '13', '1', '4');");
             //6-10 = Lunch
             db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('6', '19', '2', '1');");
             db.execSQL("INSERT INTO " + recipeIngredients_table_name + "(recipeID, ingredientID, recipeIngredientQuantity, recipeIngredientUnitID) VALUES ('6', '20', '2', '1');");
@@ -465,31 +465,31 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '1', '12', '6', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '2', '16', '8', '4');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '3', '16', '8', '4');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '5', '4', '4', '5');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '6', '181', '36', '3');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '7', '33', '8', '3');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '8', '8', '8', '3');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '11', '32', '16', '3');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '12', '10', '4', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '14', '4', '4', '5');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '15', '16', '4', '5');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '17', '16', '4', '5');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '18', '16', '12', '5');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '19', '20', '5', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '20', '16', '4', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '22', '24', '8', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '23', '4', '4', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '24', '10', '8', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '25', '2', '0', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '28', '10', '4', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '29', '15', '0', '5');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '31', '5', '1', '6');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '32', '2', '1', '5');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '40', '8', '4', '1');");
-            db.execSQL("INSERT INTO " + pantryIngredients_table_name + "(pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '41', '2', '.5', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '1', '12', '6', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '2', '16', '8', '4');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '3', '16', '8', '4');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '5', '4', '4', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '6', '181', '36', '3');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '7', '33', '8', '3');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '8', '8', '8', '3');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '11', '32', '16', '3');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '12', '10', '4', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '14', '4', '4', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '15', '16', '4', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '17', '16', '4', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '18', '16', '12', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '19', '20', '5', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '20', '16', '4', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '22', '24', '8', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '23', '4', '4', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '24', '10', '8', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '25', '2', '0', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '28', '10', '4', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '29', '15', '0', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '31', '5', '1', '6');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '32', '2', '1', '5');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '40', '8', '4', '1');");
+            db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) VALUES ('1', '41', '2', '.5', '5');");
 
 
 
@@ -509,12 +509,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //Insert dummy data                                                                                             //ID
-            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Each', 'ea');");                  //1
-            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Teaspoon', 'tsp');");             //2
-            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Tablespoon', 'tbsp');");          //3
-            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Cup', 'cup');");                  //4
-            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Ounce', 'oz');");                 //5
-            db.execSQL("INSERT INTO " + units_table_name + "(unitName, unitAbbv) VALUES ('Pound', 'lb');");                 //6
+            db.execSQL("INSERT INTO " + units_table_name + " (unitName, unitAbbv) VALUES ('Each', 'ea');");                  //1
+            db.execSQL("INSERT INTO " + units_table_name + " (unitName, unitAbbv) VALUES ('Teaspoon', 'tsp');");             //2
+            db.execSQL("INSERT INTO " + units_table_name + " (unitName, unitAbbv) VALUES ('Tablespoon', 'tbsp');");          //3
+            db.execSQL("INSERT INTO " + units_table_name + " (unitName, unitAbbv) VALUES ('Cup', 'cup');");                  //4
+            db.execSQL("INSERT INTO " + units_table_name + " (unitName, unitAbbv) VALUES ('Ounce', 'oz');");                 //5
+            db.execSQL("INSERT INTO " + units_table_name + " (unitName, unitAbbv) VALUES ('Pound', 'lb');");                 //6
 
             //Close the database
             db.close();
@@ -531,6 +531,134 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.close();
 
         return numRows;
+    }
+
+    //==============================================================================================================================================
+    //                                                                  Pantries
+    //==============================================================================================================================================
+
+    //Function to get all household names to fill sign up spinner
+    public ArrayList<String> getHouseNames()
+    {
+        //Make a new array list
+        ArrayList<String> households = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to run
+        String selectHouseName = "SELECT houseName FROM " + pantry_table_name;
+
+        Cursor cursor = db.rawQuery(selectHouseName,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                households.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+
+        db.close();
+        return households;
+    }
+
+    //Function to create a new pantry if the user does not join an existing household
+    public void createNewPantry(String houseNameThatWasPassed)
+    {
+        //Get a writeable version of the database
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("INSERT INTO " + pantry_table_name + " (houseName) VALUES ('" + houseNameThatWasPassed + "');");
+
+        db.close();
+
+        Log.d("House created", "Housename: " + houseNameThatWasPassed);
+    }
+
+    public int getPantryId(String houseNameThatWasPassed)
+    {
+        int pantryId = -1;
+
+        if(houseNameExists(houseNameThatWasPassed))
+        {
+            //Get readable database copy
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            //Query to run
+            String selectPantryId = "SELECT pantryID FROM " + pantry_table_name + " WHERE houseName = '" + houseNameThatWasPassed + "';";
+
+            Cursor cursor = db.rawQuery(selectPantryId,null);
+
+            if (cursor !=null)
+            {
+                cursor.moveToFirst();
+                pantryId = cursor.getInt(0);
+            }
+
+            db.close();
+        }
+        else
+        {
+            Log.d("DATABASE getPantryId", "There is no houseName matching this name: " + houseNameThatWasPassed);
+        }
+
+        return pantryId;
+    }
+
+    public boolean houseNameExists(String houseNameThatWasPassed)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //String for the database query
+        String checkHouseName = "SELECT count(houseName) FROM " + pantry_table_name + " WHERE houseName = '" + houseNameThatWasPassed + "';";
+
+        //Run the query
+        Cursor cursor = db.rawQuery(checkHouseName, null);
+
+        cursor.moveToFirst();
+
+        int count = cursor.getInt(0);
+
+        db.close();
+
+        if (count != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //==============================================================================================================================================
+    //                                                                  Users
+    //==============================================================================================================================================
+
+    //Function used to sign up a user
+    public void signUpUser(User userThatWasPassed)
+    {
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Insert statement to insert the user into the database
+        db.execSQL("INSERT INTO " + users_table_name + " (username, password, fName, lname, email)" +
+                    "VALUES ('" + userThatWasPassed.getUsername() + "','" + userThatWasPassed.getPassword() + "','" + userThatWasPassed.getfName() + "','" + userThatWasPassed.getlName() + "','" + userThatWasPassed.getEmail() + "');");
+
+        db.close();
+    }
+
+    //Function used to log in user
+    public void signInUser()
+    {
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
     }
 
     //==============================================================================================================================================
@@ -571,7 +699,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 RecipeList.getInstance().addRecipe(recipe);
 
                 //Debugging message
-                Log.d("DATABASE fillRecipeArrayList()", "Recipe " + (i +1) + ": " + recipe.getRecipeName());
+                //Log.d("DATABASE fillRecipeArrayList()", "Recipe " + (i +1) + ": " + recipe.getRecipeName());
 
                 //Move the cursor
                 cursor.moveToNext();
@@ -810,7 +938,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
                 //Debugging message
                 //Log.d("DATABASE fillPantryIngredientsArrayList()", "Ingredient " + (i +1) + ": " + .getRecipeName());
-                Log.d("DATABASE fillPantryIngredientsArrayList()", "Ingredient " + (i +1) + " added");
+                //Log.d("DATABASE fillPantryIngredientsArrayList()", "Ingredient " + (i +1) + " added");
 
                 //Move the cursor
                 cursor.moveToNext();
