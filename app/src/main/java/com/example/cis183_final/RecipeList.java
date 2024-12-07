@@ -64,6 +64,28 @@ public class RecipeList
         notifyAdapterToRefresh();
     }
 
+    public ArrayList<Recipe> getRecipesByMealTime(int mealTimeId)
+    {
+        ArrayList<Recipe> recipesByMealTime = new ArrayList<>();
+
+        if (RecipeList.getInstance().getRecipes() != null)
+        {
+            for (int i = 0; i < RecipeList.getInstance().getRecipes().size(); i++)
+            {
+                if (RecipeList.getInstance().getRecipes().get(i).getMealTimeId() == mealTimeId)
+                {
+                    recipesByMealTime.add(RecipeList.getInstance().getRecipes().get(i));
+                }
+            }
+        }
+        else
+        {
+            Log.d("RECIPELIST getRecipesByMealTime()","Failed to grab instance of the RecipeList");
+        }
+
+        return recipesByMealTime;
+    }
+
     public void notifyAdapterToRefresh()
     {
         if (recipeListAdapter != null)

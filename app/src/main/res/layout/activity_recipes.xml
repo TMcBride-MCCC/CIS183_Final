@@ -32,23 +32,25 @@
     <ListView
         android:id="@+id/lv_v_recipes_recipeList"
         android:layout_width="409dp"
-        android:layout_height="519dp"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_v_recipes_bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_v_recipes_filter" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_recipes_filter"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_v_recipes_newRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_marginBottom="39dp"
         android:text="New Recipe"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_v_recipes_bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv_v_recipes_recipeList" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_v_recipes_filter"

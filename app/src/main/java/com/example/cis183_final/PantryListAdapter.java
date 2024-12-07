@@ -66,7 +66,7 @@ public class PantryListAdapter extends BaseAdapter
         //Set the GUI
         categoryName.setText(dbHelper.getIngredientCategoryName(dbHelper.getIngredientCategoryID(pantryIngredient.getIngredientId())));
         itemName.setText(dbHelper.getIngredientName(pantryIngredient.getIngredientId()));
-        amountLeft.setText(String.valueOf(dbHelper.getIngredientStock(pantryIngredient.getIngredientId())));
+        amountLeft.setText(String.valueOf(dbHelper.getIngredientStock(pantryIngredient.getIngredientId())) + " " + (dbHelper.getUnitAbbv(pantryIngredient.getPantryIngredientUnitId())));
 
         return view;
     }

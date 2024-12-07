@@ -26,6 +26,7 @@ public class HomePage extends AppCompatActivity
     Button btn_j_home_saturday;
     Button btn_j_home_sunday;
     BottomNavigationView bnv_j_home_bottomNav;
+    DatabaseHelper dbHelper;
 
     Intent intent_j_main_mealPlan;
 
@@ -46,9 +47,14 @@ public class HomePage extends AppCompatActivity
         btn_j_home_sunday = findViewById(R.id.btn_v_home_sunday);
         bnv_j_home_bottomNav = findViewById(R.id.bnv_v_main_bottomNav);
 
+        //DATABASE
+        //Make a new instance of the database
+        dbHelper = new DatabaseHelper(this);
+
         //Functions
         dayButtonListeners();
         bottomNavOnNavItemSelectedListener();
+        fillRecipeList();
     }
 
     private void dayButtonListeners()
@@ -172,4 +178,13 @@ public class HomePage extends AppCompatActivity
             }
         });
     }
+
+    private void fillRecipeList()
+    {
+        if (RecipeList.getInstance().getRecipes().isEmpty())
+        {
+            dbHelper.fillRecipeArrayList();
+        }
+    }
+
 }

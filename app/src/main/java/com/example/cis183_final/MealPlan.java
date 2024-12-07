@@ -2,10 +2,12 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,8 +17,12 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class MealPlan extends AppCompatActivity
 {
@@ -28,6 +34,9 @@ public class MealPlan extends AppCompatActivity
     DatabaseHelper dbHelper;
     private CardView selectedCard;
     //BREAKFAST
+    RecyclerView rv_j_mealPlan_breakfast;
+    RecyclerView rv_j_mealPlan_lunch;
+    RecyclerView rv_j_mealPlan_dinner;
 
     //LUNCH
 
@@ -46,19 +55,19 @@ public class MealPlan extends AppCompatActivity
         btn_j_mealPlan_submit = findViewById(R.id.btn_v_mealPlan_submit);
         bnv_j_mealPlan_bottomNav = findViewById(R.id.bnv_v_mealPlan_bottomNav);
         //BREAKFAST
-
+        rv_j_mealPlan_breakfast = findViewById(R.id.rv_v_mealPlan_breakfast);
         //LUNCH
-
+        rv_j_mealPlan_lunch = findViewById(R.id.rv_v_mealPlan_lunch);
         //DINNER
-
+        rv_j_mealPlan_dinner = findViewById(R.id.rv_v_mealPlan_dinner);
         //DATABASE
         dbHelper = new DatabaseHelper(this);
-
 
         //Functions
         getDay();
         submitButtonOnClickListener();
         bottomNavOnNavItemSelectedListener();
+        fillRecyclerView();
     }
 
     private void getDay()
@@ -66,11 +75,6 @@ public class MealPlan extends AppCompatActivity
         camefrom = getIntent();
         String day = camefrom.getStringExtra("Day");
         tv_j_mealPlan_day.setText(day);
-    }
-
-    private void loadBreakfastRecipes()
-    {
-        //String recipeName = reci
     }
 
     private void submitButtonOnClickListener()
@@ -118,5 +122,48 @@ public class MealPlan extends AppCompatActivity
                 return false;
             }
         });
+    }
+
+    private void fillRecyclerView()
+    {
+        //Create a new recipe arraylist that only contains breakfast recipes
+        ArrayList<Recipe> breakfastRecipes = RecipeList.getInstance().getRecipesByMealTime(1);
+        ArrayList<Recipe> lunchRecipes = RecipeList.getInstance().getRecipesByMealTime(2);
+        ArrayList<Recipe> dinnerRecipes = RecipeList.getInstance().getRecipesByMealTime(3);
+
+        //Check if adapters are null
+        if (rv_j_mealPlan_breakfast.getAdapter() == null || rv_j_mealPlan_lunch.getAdapter() == null || rv_j_mealPlan_dinner.getAdapter() == null)
+        {
+            //Breakfast
+            if (rv_j_mealPlan_breakfast.getAdapter() == null)
+            {
+                MealPlanAdapter breakfastAdapter = new MealPlanAdapter(this, breakfastRecipes, dbHelper);
+                rv_j_mealPlan_breakfast.setAdapter(breakfastAdapter);
+                rv_j_mealPlan_breakfast.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            } else
+            {
+                rv_j_mealPlan_breakfast.getAdapter().notifyDataSetChanged();
+            }
+            //Lunch
+            if (rv_j_mealPlan_lunch.getAdapter() == null)
+            {
+                MealPlanAdapter lunchAdapter = new MealPlanAdapter(this, lunchRecipes, dbHelper);
+                rv_j_mealPlan_lunch.setAdapter(lunchAdapter);
+                rv_j_mealPlan_lunch.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            } else
+            {
+                rv_j_mealPlan_lunch.getAdapter().notifyDataSetChanged();
+            }
+            //Dinner
+            if (rv_j_mealPlan_dinner.getAdapter() == null)
+            {
+                MealPlanAdapter dinnerAdapter = new MealPlanAdapter(this, lunchRecipes, dbHelper);
+                rv_j_mealPlan_dinner.setAdapter(dinnerAdapter);
+                rv_j_mealPlan_dinner.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            } else
+            {
+                rv_j_mealPlan_dinner.getAdapter().notifyDataSetChanged();
+            }
+        }
     }
 }
