@@ -661,6 +661,61 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     }
 
+    public ArrayList<String> getAllUsernames()
+    {
+        //Make a new array list
+        ArrayList<String> listOfUsernames = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to run
+        String selectUsername = "SELECT username FROM " + users_table_name;
+
+        Cursor cursor = db.rawQuery(selectUsername,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                listOfUsernames.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+
+        db.close();
+        return listOfUsernames;
+    }
+
+    public ArrayList<String> getAllEmails()
+    {
+        ArrayList<String> listOfEmails = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectEmail = "SELECT email FROM " + users_table_name;
+
+        Cursor cursor = db.rawQuery(selectEmail,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                listOfEmails.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+
+        db.close();
+        return listOfEmails;
+    }
+
     //==============================================================================================================================================
     //                                                                  RECIPES
     //==============================================================================================================================================

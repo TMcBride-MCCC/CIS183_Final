@@ -2,6 +2,8 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,6 +34,13 @@ public class MainActivity extends AppCompatActivity
     Spinner sp_j_main_households;
     Button btn_j_main_signUp;
     TextView tv_j_main_signIn;
+    TextView tv_j_main_allFieldsError;
+    TextView tv_j_main_usernameError;
+    TextView tv_j_main_emailError;
+    TextView tv_j_main_houseError;
+    boolean validUsername = false;
+    boolean validEmail = false;
+    boolean validHouseName = false;
     //Database
     DatabaseHelper dbHelper;
 
@@ -55,11 +64,21 @@ public class MainActivity extends AppCompatActivity
         sp_j_main_households = findViewById(R.id.sp_v_main_households);
         btn_j_main_signUp = findViewById(R.id.btn_v_main_signUp);
         tv_j_main_signIn = findViewById(R.id.tv_v_main_signIn);
+        tv_j_main_allFieldsError = findViewById(R.id.tv_v_main_allFieldsError);
+        tv_j_main_usernameError = findViewById(R.id.tv_v_main_usernameError);
+        tv_j_main_emailError = findViewById(R.id.tv_v_main_emailError);
+        tv_j_main_houseError = findViewById(R.id.tv_v_main_houseError);
 
         //Hide the spinner
         sp_j_main_households.setVisibility(View.INVISIBLE);
         //Hide the newHouseName
         et_j_main_newPantryHouseName.setVisibility(View.INVISIBLE);
+        //Hide the error messages
+        tv_j_main_allFieldsError.setVisibility(View.INVISIBLE);
+        tv_j_main_usernameError.setVisibility(View.INVISIBLE);
+        tv_j_main_emailError.setVisibility(View.INVISIBLE);
+        tv_j_main_houseError.setVisibility(View.INVISIBLE);
+
 
         //DATABASE
         //Make a new instance of the database
@@ -72,6 +91,9 @@ public class MainActivity extends AppCompatActivity
         radioButtonClickListener();
         signUpButtonClickListener();
         signInTextOnClickListener();
+        usernameTextChangedListener();
+        emailTextChangeListener();
+        houseNameTextChangedListener();
     }
 
     private void fillSpinner()
@@ -151,6 +173,7 @@ public class MainActivity extends AppCompatActivity
                     }
 
                     dbHelper.signUpUser(user);
+                    clearInfo();
                     Log.d("SignUpOnClickListener()","User Created");
                     Log.d("SignUpOnClickListener()","Username: " + user.getUsername());
                     Log.d("SignUpOnClickListener()","Password: " + user.getPassword());
@@ -162,6 +185,7 @@ public class MainActivity extends AppCompatActivity
                 else
                 {
                     //Make GUI error text and enable it here
+                    tv_j_main_allFieldsError.setVisibility(View.VISIBLE);
                 }
 
                 //startActivity(new Intent(MainActivity.this, HomePage.class));
@@ -179,5 +203,172 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, SignIn.class));
             }
         });
+    }
+
+    private void usernameTextChangedListener()
+    {
+        et_j_main_username.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                validUsername = checkForValidUsername(et_j_main_username.getText().toString());
+
+                if (validUsername)
+                {
+                    //No error
+                    tv_j_main_usernameError.setVisibility(View.INVISIBLE);
+                    btn_j_main_signUp.setEnabled(true);
+                }
+                else
+                {
+                    //Error
+                    tv_j_main_usernameError.setVisibility(View.VISIBLE);
+                    btn_j_main_signUp.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+    }
+
+    private void emailTextChangeListener()
+    {
+        et_j_main_email.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                {
+                    validEmail = checkForValidHouseName(et_j_main_email.getText().toString());
+
+                    if (validEmail)
+                    {
+                        //No error
+                        tv_j_main_emailError.setVisibility(View.INVISIBLE);
+                        btn_j_main_signUp.setEnabled(true);
+                    }
+                    else
+                    {
+                        //Error
+                        tv_j_main_emailError.setVisibility(View.VISIBLE);
+                        btn_j_main_signUp.setEnabled(false);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+    }
+
+    private void houseNameTextChangedListener()
+    {
+        et_j_main_newPantryHouseName.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                validHouseName = checkForValidHouseName(et_j_main_newPantryHouseName.getText().toString());
+
+                if (validHouseName)
+                {
+                    //No error
+                    tv_j_main_houseError.setVisibility(View.INVISIBLE);
+                    btn_j_main_signUp.setEnabled(true);
+                }
+                else
+                {
+                    //Error
+                    tv_j_main_houseError.setVisibility(View.VISIBLE);
+                    btn_j_main_signUp.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+    }
+
+    private boolean checkForValidUsername(String username)
+    {
+        ArrayList<String> listOfUsernames = dbHelper.getAllUsernames();
+
+        for (int i = 0; i < listOfUsernames.size(); i++)
+        {
+            if (listOfUsernames.get(i).equals(username))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean checkForValidEmail(String email)
+    {
+        ArrayList<String> listofEmails = dbHelper.getAllEmails();
+
+        for (int i =0; i < listofEmails.size(); i++)
+        {
+            if (listofEmails.get(i).equals(email))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean checkForValidHouseName(String houseName)
+    {
+        ArrayList<String> listOfHouseNames = dbHelper.getHouseNames();
+
+        for (int i = 0; i <listOfHouseNames.size(); i++)
+        {
+            if (listOfHouseNames.get(i).equals(houseName))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void clearInfo()
+    {
+        et_j_main_username.setText("");
+        et_j_main_password.setText("");
+        et_j_main_fName.setText("");
+        et_j_main_lName.setText("");
+        et_j_main_email.setText("");
+        rg_j_main_pantryGroup.clearCheck();
+        sp_j_main_households.setVisibility(View.INVISIBLE);
+        et_j_main_newPantryHouseName.setVisibility(View.INVISIBLE);
     }
 }
