@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -17,6 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class AddIngredientToPantry extends AppCompatActivity
 {
@@ -56,9 +59,29 @@ public class AddIngredientToPantry extends AppCompatActivity
         dbHelper = new DatabaseHelper(this);
 
         //Functions
+        changeHouseNameBasedOnUser();
+        fillSpinners();
         bottomNavOnNavItemSelectedListener();
         addToIngredientTableClickListener();
 
+    }
+
+    private void changeHouseNameBasedOnUser()
+    {
+        tv_j_addIngredientToPantry_houseName.setText("To the " + dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId()) + " house");
+    }
+
+    private void fillSpinners()
+    {
+        //Fill Ingredient spinner
+        ArrayList<String> ingredientNames = dbHelper.getAllIngredientNames();
+        ArrayAdapter<String> ingredientNamesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ingredientNames);
+        sp_j_addIngredientToPantry_ingredients.setAdapter(ingredientNamesAdapter);
+
+        //Fill Unit spinner
+        ArrayList<String> unitNames = dbHelper.getAllUnitNames();
+        ArrayAdapter<String> unitNamesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, unitNames);
+        sp_j_addIngredientToPantry_units.setAdapter(unitNamesAdapter);
     }
 
     private void addToIngredientTableClickListener()

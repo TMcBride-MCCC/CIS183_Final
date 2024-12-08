@@ -1120,6 +1120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     //==============================================================================================================================================
 
     //Function used to copy all pantryIngredient data from database to ArrayList
+    //No longer used
     public void fillPantryIngredientsArrayList()
     {
         //Delete the recipes from the ArrayList to prevent duplications
@@ -1432,5 +1433,111 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
 
         return unitAbbv;
+    }
+
+    //==============================================================================================================================================
+    //                                                                  Global Ingredients
+    //==============================================================================================================================================
+
+    //Function to get a list of all categoryNames from Category table
+    public ArrayList<String> getAllCategoryNames()
+    {
+        //Make a new array list
+        ArrayList<String> categoryNames = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to run
+        String selectCategoryName = "SELECT categoryName FROM " + category_table_name;
+
+        Cursor cursor = db.rawQuery(selectCategoryName,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                categoryNames.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+        else
+        {
+            Log.d("DATABASE getCategoryNames()","cursor came back null");
+        }
+
+        db.close();
+        return categoryNames;
+    }
+
+    //Function to get the a list of all ingredientNames from Ingredients table
+    public ArrayList<String> getAllIngredientNames()
+    {
+        //Make a new array list
+        ArrayList<String> listOfIngredientNames = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to run
+        String selectIngredientName = "SELECT ingredientName FROM " + ingredients_table_name;
+
+        Cursor cursor = db.rawQuery(selectIngredientName,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                listOfIngredientNames.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+
+        db.close();
+        return listOfIngredientNames;
+    }
+
+    //==============================================================================================================================================
+    //                                                                  Units
+    //==============================================================================================================================================
+
+    //Function to get a list of all unitNames from Units table
+    public ArrayList<String> getAllUnitNames()
+    {
+        //Make a new array list
+        ArrayList<String> unitNames = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to run
+        String selectUnitName = "SELECT unitName FROM " + units_table_name;
+
+        Cursor cursor = db.rawQuery(selectUnitName,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                unitNames.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+        else
+        {
+            Log.d("DATABASE getCategoryNames()","cursor came back null");
+        }
+
+        db.close();
+        return unitNames;
     }
 }

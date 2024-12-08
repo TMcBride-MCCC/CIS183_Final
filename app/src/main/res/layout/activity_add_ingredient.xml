@@ -8,12 +8,24 @@
     tools:context=".AddIngredient">
 
     <TextView
+        android:id="@+id/tv_v_addIngredient_nameError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:text="Ingredient is in the database"
+        android:textColor="#FF0000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         android:text="Category"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Name"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -87,10 +99,9 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tv_v_addIngredient_houseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To the BLANK house"
+        android:text="To the app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
