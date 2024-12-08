@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomePage extends AppCompatActivity
 {
     //Create JAVA Variables
+    TextView tv_j_home_greeting;
     Button btn_j_home_monday;
     Button btn_j_home_tuesday;
     Button btn_j_home_wednesday;
@@ -38,6 +40,7 @@ public class HomePage extends AppCompatActivity
         setContentView(R.layout.activity_home_page);
 
         //Connect JAVA variable to GUI Variables
+        tv_j_home_greeting = findViewById(R.id.tv_v_home_greeting);
         btn_j_home_monday = findViewById(R.id.btn_v_home_monday);
         btn_j_home_tuesday = findViewById(R.id.btn_v_home_tuesday);
         btn_j_home_wednesday = findViewById(R.id.btn_v_home_wednesday);
@@ -52,9 +55,15 @@ public class HomePage extends AppCompatActivity
         dbHelper = new DatabaseHelper(this);
 
         //Functions
+        changeGreetingBasedOnUser();
         dayButtonListeners();
         bottomNavOnNavItemSelectedListener();
         fillRecipeList();
+    }
+
+    private void changeGreetingBasedOnUser()
+    {
+        tv_j_home_greeting.setText("Plan this week's meals, " + SessionData.getLoggedInUser().getfName() + "!");
     }
 
     private void dayButtonListeners()

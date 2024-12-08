@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity
                     }
 
                     dbHelper.signUpUser(user);
+                    SessionData.setLoggedInUser(user);
                     clearInfo();
                     Log.d("SignUpOnClickListener()","User Created");
                     Log.d("SignUpOnClickListener()","Username: " + user.getUsername());
@@ -181,14 +182,13 @@ public class MainActivity extends AppCompatActivity
                     Log.d("SignUpOnClickListener()","Last Name: " + user.getlName());
                     Log.d("SignUpOnClickListener()","Email: " + user.getEmail());
                     Log.d("SignUpOnClickListener()","PantryId: " + user.getPantryId());
+                    startActivity(new Intent(MainActivity.this, HomePage.class));
                 }
                 else
                 {
                     //Make GUI error text and enable it here
                     tv_j_main_allFieldsError.setVisibility(View.VISIBLE);
                 }
-
-                //startActivity(new Intent(MainActivity.this, HomePage.class));
             }
         });
     }
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
             {
                 {
-                    validEmail = checkForValidHouseName(et_j_main_email.getText().toString());
+                    validEmail = checkForValidEmail(et_j_main_email.getText().toString());
 
                     if (validEmail)
                     {

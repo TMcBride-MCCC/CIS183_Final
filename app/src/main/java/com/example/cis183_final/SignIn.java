@@ -122,8 +122,33 @@ public class SignIn extends AppCompatActivity
                 {
                     if (password.equals(dbHelper.verifyUsersPassword(username,password)))
                     {
-                        Log.d("SUCCESS","VALID LOG IN");
                         tv_j_signIn_signInError.setVisibility(View.INVISIBLE);
+                        Log.d("SUCCESS","VALID LOG IN");
+
+                        //Create a new user memory chunk
+                        User user = new User();
+
+                        //Set all of the user variables
+                        user.setPantryId(dbHelper.getUserPantryId(username));
+                        user.setUsername(username);
+                        user.setPassword(password);
+                        user.setfName(dbHelper.getUserFName(username));
+                        user.setlName(dbHelper.getUserLName(username));
+                        user.setEmail(dbHelper.getUserEmail(username));
+
+                        //Debugging
+                        //Log.d("SignInOnClickListener()","User Created");
+                        //Log.d("SignInOnClickListener()","PantryId: " + user.getPantryId());
+                        //Log.d("SignInOnClickListener()","Username: " + user.getUsername());
+                        //Log.d("SignInOnClickListener()","Password: " + user.getPassword());
+                        //Log.d("SignInOnClickListener()","First Name: " + user.getfName());
+                        //Log.d("SignInOnClickListener()","Last Name: " + user.getlName());
+                        //Log.d("SignInOnClickListener()","Email: " + user.getEmail());
+
+                        //Set the logged in user to this user
+                        SessionData.setLoggedInUser(user);
+
+                        startActivity(new Intent(SignIn.this, HomePage.class));
                     }
                     else
                     {
