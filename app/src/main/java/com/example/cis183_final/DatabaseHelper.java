@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public DatabaseHelper(Context c)
     {
-        super (c, database_name, null, 10);
+        super (c, database_name, null, 11);
     }
     @Override
     public void onCreate(SQLiteDatabase db)
@@ -213,6 +213,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
             //Insert dummy data
             db.execSQL("INSERT INTO " + pantry_table_name + " (houseName) VALUES ('McBride');");
+            db.execSQL("INSERT INTO " + pantry_table_name + " (houseName) VALUES ('Pittie Committee');");
 
             //Close the database
             db.close();
@@ -851,6 +852,32 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return pantryId;
     }
 
+    public String getUserPantryHouseName(int pantryIdThatWasPassed)
+    {
+        String houseName = "";
+
+        //Get a readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query string
+        String selectHouseName = "SELECT houseName FROM " + pantry_table_name + " WHERE pantryID = '" + pantryIdThatWasPassed + "';";
+
+        //Run the query
+        Cursor cursor = db.rawQuery(selectHouseName,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+            houseName = cursor.getString(0);
+        }
+        else
+        {
+            Log.d("DATABASE getUserPantryHouseName()","Cursor came back null");
+        }
+
+        return houseName;
+    }
+
     //==============================================================================================================================================
     //                                                                  RECIPES
     //==============================================================================================================================================
@@ -1092,7 +1119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     //                                                                  Pantry Ingredients
     //==============================================================================================================================================
 
-    //Function used to copy pantryIngredient data from database to ArrayList
+    //Function used to copy all pantryIngredient data from database to ArrayList
     public void fillPantryIngredientsArrayList()
     {
         //Delete the recipes from the ArrayList to prevent duplications
@@ -1103,6 +1130,55 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         //Query to pull all pantry ingredients from PantryIngredients table
         String selectQuery = "SELECT * FROM " + pantryIngredients_table_name;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor !=null)
+        {
+            //Move to first row
+            cursor.moveToFirst();
+
+            //For loop to move through the entire table
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                //Make a new recipe memory chunk
+                PantryIngredient ingredient = new PantryIngredient();
+
+                //Set the info
+                ingredient.setPantryId(cursor.getInt(1));
+                ingredient.setIngredientId(cursor.getInt(2));
+                ingredient.setPantryIngredientStock(cursor.getInt(3));
+                ingredient.setPantryIngredientBuyTrigger(cursor.getInt(4));
+                ingredient.setPantryIngredientUnitId(cursor.getInt(5));
+
+                //Add the ingredient data to PantryIngredientList
+                PantryIngredientList.getInstance().addPantryIngredient(ingredient);
+
+                //Debugging message
+                //Log.d("DATABASE fillPantryIngredientsArrayList()", "Ingredient " + (i +1) + ": " + .getRecipeName());
+                //Log.d("DATABASE fillPantryIngredientsArrayList()", "Ingredient " + (i +1) + " added");
+
+                //Move the cursor
+                cursor.moveToNext();
+            }
+
+            //Close the db
+            db.close();
+        }
+        //Log for total added
+        Log.d("fillPantryIngredientsArrayList() FINISHED", "Total Recipes added: " + PantryIngredientList.getInstance().getPantryIngredients().size());
+    }
+
+    //Function used to copy pantryIngredient data from database to ArrayList based on the users pantryId
+    public void fillPantryIngredientsArrayListGivenUserPantryId(int pantryIdThatWasPassed)
+    {
+        //Delete the recipes from the ArrayList to prevent duplications
+        PantryIngredientList.getInstance().getPantryIngredients().clear();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to pull all pantry ingredients from PantryIngredients table
+        String selectQuery = "SELECT * FROM " + pantryIngredients_table_name + " WHERE pantryID = '" + pantryIdThatWasPassed + "';";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor !=null)

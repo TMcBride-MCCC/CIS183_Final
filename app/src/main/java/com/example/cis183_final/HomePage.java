@@ -55,13 +55,13 @@ public class HomePage extends AppCompatActivity
         dbHelper = new DatabaseHelper(this);
 
         //Functions
-        changeGreetingBasedOnUser();
+        changeGreetingTextBasedOnUser();
         dayButtonListeners();
         bottomNavOnNavItemSelectedListener();
         fillRecipeList();
     }
 
-    private void changeGreetingBasedOnUser()
+    private void changeGreetingTextBasedOnUser()
     {
         tv_j_home_greeting.setText("Plan this week's meals, " + SessionData.getLoggedInUser().getfName() + "!");
     }

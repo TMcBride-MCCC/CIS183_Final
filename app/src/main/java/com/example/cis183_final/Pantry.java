@@ -11,9 +11,6 @@ import android.widget.ListView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,7 +31,7 @@ public class Pantry extends AppCompatActivity
 
         //Connect JAVA variables to GUI variables
         lv_j_pantry_listOfIngredients = findViewById(R.id.lv_v_pantry_listOfIngredients);
-        btn_j_pantry_addIngredient = findViewById(R.id.btn_v_pantry_addIngredient);
+        btn_j_pantry_addIngredient = findViewById(R.id.btn_v_pantry_addIngredientToPantry);
         bnv_j_pantry_bottomNav = findViewById(R.id.bnv_v_pantry_bottomNav);
 
         //Set the navigation bar icon
@@ -53,7 +50,7 @@ public class Pantry extends AppCompatActivity
     protected void onResume()
     {
         super.onResume();
-        dbHelper.fillPantryIngredientsArrayList();
+        dbHelper.fillPantryIngredientsArrayListGivenUserPantryId(SessionData.getLoggedInUser().getPantryId());
         fillListView();
     }
 
@@ -99,7 +96,7 @@ public class Pantry extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(Pantry.this, AddIngredient.class));
+                startActivity(new Intent(Pantry.this, AddIngredientToPantry.class));
             }
         });
     }
