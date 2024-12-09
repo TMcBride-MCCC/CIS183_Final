@@ -746,6 +746,60 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return listOfEmails;
     }
 
+    public int getUserId(String usernameThatWasPassed)
+    {
+        int userId = -1;
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Select query
+        String selectUserId = "SELECT userID FROM " + users_table_name + " WHERE username = '" + usernameThatWasPassed + "';";
+
+        Cursor cursor = db.rawQuery(selectUserId,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+            userId = cursor.getInt(0);
+        }
+        else
+        {
+            Log.d("DATABASE getUserUsername()","Cursor came back null");
+        }
+
+        db.close();
+
+        return userId;
+    }
+
+    public String getUserUsername(String userIdThatWasPassed)
+    {
+        String username = "";
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Select query
+        String selectUsername = "SELECT username FROM " + users_table_name + " WHERE userID = '" + userIdThatWasPassed + "';";
+
+        Cursor cursor = db.rawQuery(selectUsername,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+            username = cursor.getString(0);
+        }
+        else
+        {
+            Log.d("DATABASE getUserUsername()","Cursor came back null");
+        }
+
+        db.close();
+
+        return username;
+    }
+
     public String getUserFName(String usernameThatWasPassed)
     {
         String fName = "";
@@ -886,6 +940,72 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
 
         return houseName;
+    }
+
+    public void changeUserUsername(String oldUsernameThatWasPassed, String newUsernameThatWasPassed)
+    {
+        //Get writable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Update query
+        db.execSQL("UPDATE " + users_table_name + " Set username = '" + newUsernameThatWasPassed + "' WHERE username = '" + oldUsernameThatWasPassed + "';");
+
+        db.close();
+    }
+
+    public void changeUserPassword(String oldUsernameThatWasPassed, String newPasswordThatWasPassed)
+    {
+        //Get writable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Update query
+        db.execSQL("UPDATE " + users_table_name + " Set password = '" + newPasswordThatWasPassed + "' WHERE username = '" + oldUsernameThatWasPassed + "';");
+
+        db.close();
+    }
+
+    public void changeUserFName(int userIdThatWasPassed, String newFNameThatWasPassed)
+    {
+        //Get writable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Update query
+        db.execSQL("UPDATE " + users_table_name + " Set fName = '" + newFNameThatWasPassed + "' WHERE userID = '" + userIdThatWasPassed + "';");
+
+        db.close();
+    }
+
+    public void changeUserLName(int userIdThatWasPassed, String newLNameThatWasPassed)
+    {
+        //Get writable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Update query
+        db.execSQL("UPDATE " + users_table_name + " Set lName = '" + newLNameThatWasPassed + "' WHERE userID = '" + userIdThatWasPassed + "';");
+
+        db.close();
+    }
+
+    public void changeUserEmail(int userIdThatWasPassed, String newEmailThatWasPassed)
+    {
+        //Get writable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Update query
+        db.execSQL("UPDATE " + users_table_name + " Set email = '" + newEmailThatWasPassed + "' WHERE userID = '" + userIdThatWasPassed + "';");
+
+        db.close();
+    }
+
+    public void changeUserPantryId(int userIdThatWasPassed, int newPantryIdThatWasPassed)
+    {
+        //Get writable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Update query
+        db.execSQL("UPDATE " + users_table_name + " Set pantryId = '" + newPantryIdThatWasPassed + "' WHERE userID = '" + userIdThatWasPassed + "';");
+
+        db.close();
     }
 
     //==============================================================================================================================================

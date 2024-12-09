@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -271,7 +272,113 @@ public class EditProfile extends AppCompatActivity
 
     private void submitButtonClickListener()
     {
+        btn_j_editProfile_submit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                int userId = dbHelper.getUserId(SessionData.getLoggedInUser().getUsername());
+                String oldUsername = SessionData.getLoggedInUser().getUsername();
+                String oldPassword = SessionData.getLoggedInUser().getPassword();
+                String oldFName = SessionData.getLoggedInUser().getfName();
+                String oldLName = SessionData.getLoggedInUser().getlName();
+                String oldEmail = SessionData.getLoggedInUser().getEmail();
+                String oldHousehold = dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId());
+                String newUsername = et_j_editProfile_username.getText().toString();
+                String newPassword = et_j_editProfile_password.getText().toString();
+                String newFName = et_j_editProfile_fName.getText().toString();
+                String newLName = et_j_editProfile_lName.getText().toString();
+                String newEmail = et_j_editProfile_email.getText().toString();
+                String joinExistingHousehold = sp_j_editProfile_households.getSelectedItem().toString();
+                String createNewHousehold = et_j_editProfile_newPantryHouseName.getText().toString();
 
+                //If the username is different
+                if (!oldUsername.equals(newUsername))
+                {
+                    Log.d("SessionData", "Username was: " + SessionData.getLoggedInUser().getUsername());
+
+                    //Call dbHelper to change the username in the database
+                    dbHelper.changeUserUsername(oldUsername,newUsername);
+                    //Change the username in SessionData
+                    SessionData.getLoggedInUser().setUsername(newUsername);
+
+                    Log.d("SessionData", "Username is now: " + SessionData.getLoggedInUser().getUsername());
+                }
+                if (!oldPassword.equals(newPassword))
+                {
+                    Log.d("SessionData", "Password was: " + SessionData.getLoggedInUser().getPassword());
+
+                    //Call dbHelper to change the password in the database
+                    dbHelper.changeUserPassword(oldUsername, newPassword);
+                    //Change the password in SessionData
+                    SessionData.getLoggedInUser().setPassword(newPassword);
+
+                    Log.d("SessionData", "Password is now: " + SessionData.getLoggedInUser().getPassword());
+                }
+                if (!oldFName.equals(newFName))
+                {
+                    Log.d("SessionData", "First name was: " + SessionData.getLoggedInUser().getfName());
+
+                    //Call dbHelper to change the first name in the database
+                    dbHelper.changeUserFName(userId, newFName);
+                    //Change the first name in SessionData
+                    SessionData.getLoggedInUser().setfName(newFName);
+
+                    Log.d("SessionData", "First name is now: " + SessionData.getLoggedInUser().getfName());
+                }
+                if (!oldLName.equals(newLName))
+                {
+                    Log.d("SessionData", "Last name was: " + SessionData.getLoggedInUser().getlName());
+
+                    //Call dbHelper to change the last name in the database
+                    dbHelper.changeUserLName(userId, newLName);
+                    //Change the last name in SessionData
+                    SessionData.getLoggedInUser().setlName(newLName);
+
+                    Log.d("SessionData", "Last name is now: " + SessionData.getLoggedInUser().getlName());
+                }
+                if (!oldEmail.equals(newEmail))
+                {
+                    Log.d("SessionData", "Email was: " + SessionData.getLoggedInUser().getEmail());
+
+                    //Call dbHelper to change the email in the database
+                    dbHelper.changeUserEmail(userId, newEmail);
+                    //Change the email in SessionData
+                    SessionData.getLoggedInUser().setEmail(newEmail);
+
+                    Log.d("SessionData", "Email is now: " + SessionData.getLoggedInUser().getEmail());
+                }
+                if (rb_j_editProfile_joinPantry.isChecked())
+                {
+                    Log.d("SessionData", "Pantry was: " + dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId()));
+
+                    //Call dbHelper to change the pantry in the database
+                    dbHelper.changeUserPantryId(userId, dbHelper.getPantryId(joinExistingHousehold));
+                    //Change the pantry in SessionData
+                    SessionData.getLoggedInUser().setPantryId(dbHelper.getPantryId(joinExistingHousehold));
+
+                    Log.d("SessionData", "Pantry is now: " + dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId()));
+                }
+                if (rb_j_editProfile_newPantry.isChecked())
+                {
+                    Log.d("SessionData", "Pantry was: " + dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId()));
+
+                    //Call dbHelper to create a new pantry
+                    dbHelper.createNewPantry(createNewHousehold);
+                    //Call dbHelper to change the pantry in the database
+                    dbHelper.changeUserPantryId(userId, dbHelper.getPantryId(createNewHousehold));
+                    //Change the pantry in SessionData
+                    SessionData.getLoggedInUser().setPantryId(dbHelper.getPantryId(createNewHousehold));
+
+                    Log.d("SessionData", "Pantry is now: " + dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId()));
+                }
+
+                startActivity(new Intent(EditProfile.this, UserProfile.class));
+
+                //Log.d("submit button", "button pressed");
+                //Log.d("UserId", "UserId is:" + dbHelper.getUserId(oldUsername));
+            }
+        });
     }
 
     private void fillEditTextsWithUserInfo()
