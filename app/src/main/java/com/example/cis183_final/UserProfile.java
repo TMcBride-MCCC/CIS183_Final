@@ -24,6 +24,7 @@ public class UserProfile extends AppCompatActivity
     TextView tv_j_userProfile_fName;
     TextView tv_j_userProfile_lName;
     TextView tv_j_userProfile_email;
+    TextView tv_j_userProfile_household;
     Button btn_j_userProfile_edit;
     Button btn_j_userProfile_delete;
     TextView tv_j_userProfile_deletePrompt;
@@ -46,6 +47,7 @@ public class UserProfile extends AppCompatActivity
         tv_j_userProfile_lName = findViewById(R.id.tv_v_userProfile_lName);
         tv_j_userProfile_email = findViewById(R.id.tv_v_userProfile_email);
         btn_j_userProfile_edit = findViewById(R.id.btn_v_userProfile_edit);
+        tv_j_userProfile_household = findViewById(R.id.tv_v_userProfile_household);
         btn_j_userProfile_delete = findViewById(R.id.btn_v_userProfile_delete);
         tv_j_userProfile_deletePrompt = findViewById(R.id.tv_v_userProfile_deletePrompt);
         btn_j_userProfile_deletePromptYes = findViewById(R.id.btn_v_userProfile_deletePromptYes);
@@ -80,6 +82,7 @@ public class UserProfile extends AppCompatActivity
         tv_j_userProfile_fName.setText(SessionData.getLoggedInUser().getfName());
         tv_j_userProfile_lName.setText(SessionData.getLoggedInUser().getlName());
         tv_j_userProfile_email.setText(SessionData.getLoggedInUser().getEmail());
+        tv_j_userProfile_household.setText(dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId()));
     }
 
     private void editButtonClickListener()
@@ -90,6 +93,7 @@ public class UserProfile extends AppCompatActivity
             public void onClick(View view)
             {
                 //Go to Edit Page
+                startActivity(new Intent(UserProfile.this, EditProfile.class));
             }
         });
     }
