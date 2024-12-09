@@ -157,6 +157,11 @@ public class AddIngredient extends AppCompatActivity
                     startActivity(new Intent(AddIngredient.this, GroceryList.class));
                     return true;
                 }
+                else if (navItem == R.id.profile)
+                {
+                    startActivity(new Intent(AddIngredient.this, UserProfile.class));
+                    return true;
+                }
 
                 return false;
             }

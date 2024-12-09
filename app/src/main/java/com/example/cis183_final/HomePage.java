@@ -182,6 +182,11 @@ public class HomePage extends AppCompatActivity
                     startActivity(new Intent(HomePage.this, GroceryList.class));
                     return true;
                 }
+                else if (navItem == R.id.profile)
+                {
+                    startActivity(new Intent(HomePage.this, UserProfile.class));
+                    return true;
+                }
 
                 return false;
             }

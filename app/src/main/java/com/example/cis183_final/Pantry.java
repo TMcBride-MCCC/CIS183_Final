@@ -83,6 +83,11 @@ public class Pantry extends AppCompatActivity
                     startActivity(new Intent(Pantry.this, GroceryList.class));
                     return true;
                 }
+                else if (navItem == R.id.profile)
+                {
+                    startActivity(new Intent(Pantry.this, UserProfile.class));
+                    return true;
+                }
 
                 return false;
             }

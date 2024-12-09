@@ -96,6 +96,11 @@ public class Recipes extends AppCompatActivity
                     startActivity(new Intent(Recipes.this, GroceryList.class));
                     return true;
                 }
+                else if (navItem == R.id.profile)
+                {
+                    startActivity(new Intent(Recipes.this, UserProfile.class));
+                    return true;
+                }
 
                 return false;
             }

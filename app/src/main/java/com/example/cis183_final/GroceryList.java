@@ -67,6 +67,11 @@ public class GroceryList extends AppCompatActivity
                     startActivity(new Intent(GroceryList.this, GroceryList.class));
                     return true;
                 }
+                else if (navItem == R.id.profile)
+                {
+                    startActivity(new Intent(GroceryList.this, UserProfile.class));
+                    return true;
+                }
 
                 return false;
             }

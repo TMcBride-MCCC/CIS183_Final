@@ -118,6 +118,11 @@ public class MealPlan extends AppCompatActivity
                     startActivity(new Intent(MealPlan.this, GroceryList.class));
                     return true;
                 }
+                else if (navItem == R.id.profile)
+                {
+                    startActivity(new Intent(MealPlan.this, UserProfile.class));
+                    return true;
+                }
 
                 return false;
             }

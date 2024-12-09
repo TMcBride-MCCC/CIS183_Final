@@ -1503,6 +1503,37 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return listOfIngredientNames;
     }
 
+/*    //Function to get the a list of all ingredientNames from Ingredients table
+    //that are not in the user's pantry
+    public ArrayList<String> getAllIngredientNamesNotInPantry()
+    {
+        //Make a new array list
+        ArrayList<String> listOfIngredientNamesNotInPantry = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to run
+        String selectIngredientName = "SELECT ingredientName FROM " + ingredients_table_name;
+
+        Cursor cursor = db.rawQuery(selectIngredientName,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                listOfIngredientNames.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+
+        db.close();
+        return listOfIngredientNames;
+    }*/
+
     //==============================================================================================================================================
     //                                                                  Units
     //==============================================================================================================================================
