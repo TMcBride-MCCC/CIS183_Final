@@ -2,6 +2,8 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -34,14 +36,19 @@ public class EditProfile extends AppCompatActivity
     TextView tv_j_editProfile_householdName;
     TextView tv_j_editProfile_usernameError;
     TextView tv_j_editProfile_emailError;
+    TextView tv_j_editProfile_houseError;
     RadioGroup rg_j_editProfile_pantryGroup;
     RadioButton rb_j_editProfile_joinPantry;
     RadioButton rb_j_editProfile_newPantry;
     Spinner sp_j_editProfile_households;
     EditText et_j_editProfile_newPantryHouseName;
-    Button btn_v_editProfile_submit;
+    Button btn_j_editProfile_submit;
     BottomNavigationView bnv_j_editProfile_bottomNav;
+    private boolean validUsername;
+    private boolean validEmail;
+    private boolean validHouseName;
     DatabaseHelper dbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,17 +66,19 @@ public class EditProfile extends AppCompatActivity
         tv_j_editProfile_householdName = findViewById(R.id.tv_v_editProfile_householdName);
         tv_j_editProfile_usernameError = findViewById(R.id.tv_v_editProfile_usernameError);
         tv_j_editProfile_emailError = findViewById(R.id.tv_v_editProfile_emailError);
+        tv_j_editProfile_houseError = findViewById(R.id.tv_v_editProfile_houseError);
         rg_j_editProfile_pantryGroup = findViewById(R.id.rg_v_editProfile_pantryGroup);
         rb_j_editProfile_joinPantry = findViewById(R.id.rb_v_editProfile_joinPantry);
         rb_j_editProfile_newPantry = findViewById(R.id.rb_v_editProfile_newPantry);
         sp_j_editProfile_households = findViewById(R.id.sp_v_editProfile_households);
         et_j_editProfile_newPantryHouseName = findViewById(R.id.et_v_editProfile_newPantryHouseName);
-        btn_v_editProfile_submit = findViewById(R.id.btn_v_editProfile_submit);
+        btn_j_editProfile_submit = findViewById(R.id.btn_v_editProfile_submit);
         bnv_j_editProfile_bottomNav = findViewById(R.id.bnv_v_editProfile_bottomNav);
 
         //Hide the error messages
         tv_j_editProfile_usernameError.setVisibility(View.INVISIBLE);
         tv_j_editProfile_emailError.setVisibility(View.INVISIBLE);
+        tv_j_editProfile_houseError.setVisibility(View.INVISIBLE);
 
         //Hide household spinner and textbox
         sp_j_editProfile_households.setVisibility(View.INVISIBLE);
@@ -87,6 +96,182 @@ public class EditProfile extends AppCompatActivity
         fillSpinner();
         radioButtonClickListener();
         submitButtonClickListener();
+        usernameTextChangedListener();
+        emailTextChangedListener();
+        houseNameTextChangeListener();
+    }
+
+    private void usernameTextChangedListener()
+    {
+        et_j_editProfile_username.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                String newUsername = et_j_editProfile_username.getText().toString();
+                String oldUsername = SessionData.getLoggedInUser().getUsername();
+                validUsername = checkForValidUsername(newUsername);
+
+                if (!newUsername.equals(oldUsername))
+                {
+                    if (validUsername)
+                    {
+                        //No error
+                        tv_j_editProfile_usernameError.setVisibility(View.INVISIBLE);
+                        btn_j_editProfile_submit.setEnabled(true);
+                    }
+                    else
+                    {
+                        //Error
+                        tv_j_editProfile_usernameError.setVisibility(View.VISIBLE);
+                        btn_j_editProfile_submit.setEnabled(false);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+    }
+
+    private boolean checkForValidUsername(String username)
+    {
+        ArrayList<String> listOfUsernames = dbHelper.getAllUsernames();
+
+        for (int i = 0; i < listOfUsernames.size(); i++)
+        {
+            if (listOfUsernames.get(i).equals(username))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void emailTextChangedListener()
+    {
+        et_j_editProfile_email.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                String newEmail = et_j_editProfile_email.getText().toString();
+                String oldEmail = SessionData.getLoggedInUser().getEmail();
+                validEmail = checkForValidEmail(newEmail);
+
+                if (!newEmail.equals(oldEmail))
+                {
+                    if (validEmail)
+                    {
+                        //No error
+                        tv_j_editProfile_emailError.setVisibility(View.INVISIBLE);
+                        btn_j_editProfile_submit.setEnabled(true);
+                    }
+                    else
+                    {
+                        //Error
+                        tv_j_editProfile_emailError.setVisibility(View.VISIBLE);
+                        btn_j_editProfile_submit.setEnabled(false);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+    }
+
+    private boolean checkForValidEmail(String email)
+    {
+        ArrayList<String> listOfEmails = dbHelper.getAllEmails();
+
+        for (int i =0; i < listOfEmails.size(); i++)
+        {
+            if (listOfEmails.get(i).equals(email))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void houseNameTextChangeListener()
+    {
+        et_j_editProfile_newPantryHouseName.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                String newHouseName = et_j_editProfile_newPantryHouseName.getText().toString();
+                String oldHouseName = dbHelper.getUserPantryHouseName(SessionData.getLoggedInUser().getPantryId());
+                validHouseName = checkForValidHouseName(newHouseName);
+
+                if (!newHouseName.equals(oldHouseName))
+                {
+                    if (validHouseName)
+                    {
+                        //No error
+                        tv_j_editProfile_houseError.setVisibility(View.INVISIBLE);
+                        btn_j_editProfile_submit.setEnabled(true);
+                    }
+                    else
+                    {
+                        //Error
+                        tv_j_editProfile_houseError.setVisibility(View.VISIBLE);
+                        btn_j_editProfile_submit.setEnabled(false);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+    }
+
+    private boolean checkForValidHouseName(String houseName)
+    {
+        ArrayList<String> listOfHouseNames = dbHelper.getHouseNames();
+
+        for (int i = 0; i <listOfHouseNames.size(); i++)
+        {
+            if (listOfHouseNames.get(i).equals(houseName))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void submitButtonClickListener()
+    {
+
     }
 
     private void fillEditTextsWithUserInfo()

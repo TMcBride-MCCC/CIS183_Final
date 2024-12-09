@@ -334,11 +334,11 @@ public class MainActivity extends AppCompatActivity
 
     private boolean checkForValidEmail(String email)
     {
-        ArrayList<String> listofEmails = dbHelper.getAllEmails();
+        ArrayList<String> listOfEmails = dbHelper.getAllEmails();
 
-        for (int i =0; i < listofEmails.size(); i++)
+        for (int i =0; i < listOfEmails.size(); i++)
         {
-            if (listofEmails.get(i).equals(email))
+            if (listOfEmails.get(i).equals(email))
             {
                 return false;
             }
