@@ -3,6 +3,7 @@ package com.example.cis183_final;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -25,6 +26,9 @@ public class UserProfile extends AppCompatActivity
     TextView tv_j_userProfile_email;
     Button btn_j_userProfile_edit;
     Button btn_j_userProfile_delete;
+    TextView tv_j_userProfile_deletePrompt;
+    Button btn_j_userProfile_deletePromptYes;
+    Button btn_j_userProfile_deletePromptNo;
     BottomNavigationView bnv_j_userProfile_bottomNav;
     DatabaseHelper dbHelper;
 
@@ -43,7 +47,15 @@ public class UserProfile extends AppCompatActivity
         tv_j_userProfile_email = findViewById(R.id.tv_v_userProfile_email);
         btn_j_userProfile_edit = findViewById(R.id.btn_v_userProfile_edit);
         btn_j_userProfile_delete = findViewById(R.id.btn_v_userProfile_delete);
+        tv_j_userProfile_deletePrompt = findViewById(R.id.tv_v_userProfile_deletePrompt);
+        btn_j_userProfile_deletePromptYes = findViewById(R.id.btn_v_userProfile_deletePromptYes);
+        btn_j_userProfile_deletePromptNo = findViewById(R.id.btn_v_userProfile_deletePromptNo);
         bnv_j_userProfile_bottomNav = findViewById(R.id.bnv_v_userProfile_bottomNav);
+
+        //Hide the delete GUI
+        tv_j_userProfile_deletePrompt.setVisibility(View.INVISIBLE);
+        btn_j_userProfile_deletePromptYes.setVisibility(View.INVISIBLE);
+        btn_j_userProfile_deletePromptNo.setVisibility(View.INVISIBLE);
 
         //Set the navigation bar icon
         bnv_j_userProfile_bottomNav.setSelectedItemId(R.id.profile);
@@ -54,6 +66,81 @@ public class UserProfile extends AppCompatActivity
 
         //Functions
         bottomNavOnNavItemSelectedListener();
+        fillUserInfo();
+        editButtonClickListener();
+        deleteButtonClickListener();
+        deletePromptNoButtonClickListener();
+        deletePromptYesButtonClickListener();
+    }
+
+    private void fillUserInfo()
+    {
+        tv_j_userProfile_username.setText(SessionData.getLoggedInUser().getUsername());
+        tv_j_userProfile_password.setText(SessionData.getLoggedInUser().getPassword());
+        tv_j_userProfile_fName.setText(SessionData.getLoggedInUser().getfName());
+        tv_j_userProfile_lName.setText(SessionData.getLoggedInUser().getlName());
+        tv_j_userProfile_email.setText(SessionData.getLoggedInUser().getEmail());
+    }
+
+    private void editButtonClickListener()
+    {
+        btn_j_userProfile_edit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //Go to Edit Page
+            }
+        });
+    }
+
+    private void deleteButtonClickListener()
+    {
+        btn_j_userProfile_delete.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //Hide Edit & Delete Button
+                btn_j_userProfile_edit.setVisibility(View.INVISIBLE);
+                btn_j_userProfile_delete.setVisibility(View.INVISIBLE);
+                //Show Delete GUI
+                tv_j_userProfile_deletePrompt.setVisibility(View.VISIBLE);
+                btn_j_userProfile_deletePromptYes.setVisibility(View.VISIBLE);
+                btn_j_userProfile_deletePromptNo.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void deletePromptNoButtonClickListener()
+    {
+        btn_j_userProfile_deletePromptNo.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //Hide the DeleteGUI
+                tv_j_userProfile_deletePrompt.setVisibility(View.INVISIBLE);
+                btn_j_userProfile_deletePromptYes.setVisibility(View.INVISIBLE);
+                btn_j_userProfile_deletePromptNo.setVisibility(View.INVISIBLE);
+                //Show edit & Delete Button
+                btn_j_userProfile_edit.setVisibility(View.VISIBLE);
+                btn_j_userProfile_delete.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void deletePromptYesButtonClickListener()
+    {
+        btn_j_userProfile_deletePromptYes.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dbHelper.deleteUser(SessionData.getLoggedInUser());
+                startActivity(new Intent(UserProfile.this, MainActivity.class));
+            }
+        });
     }
 
     private void bottomNavOnNavItemSelectedListener()

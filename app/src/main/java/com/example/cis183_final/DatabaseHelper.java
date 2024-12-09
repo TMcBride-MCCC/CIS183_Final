@@ -655,6 +655,16 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.close();
     }
 
+    public void deleteUser(User userThatWasPassed)
+    {
+        //Get writable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("DELETE FROM " + users_table_name + " WHERE username = '" + userThatWasPassed.getUsername() + "';");
+
+        db.close();
+    }
+
     //Function used to log in user
     public String verifyUsersPassword(String usernameThatWasPassed, String passwordThatWasPassed)
     {
