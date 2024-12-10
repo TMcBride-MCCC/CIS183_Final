@@ -19,6 +19,7 @@ public class GroceryList extends AppCompatActivity
     //Create JAVA variables
     ListView lv_j_groceryList_listOfGroceries;
     BottomNavigationView bnv_j_groceryList_bottomNav;
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,8 +35,19 @@ public class GroceryList extends AppCompatActivity
         //Set the navigation bar icon
         bnv_j_groceryList_bottomNav.setSelectedItemId(R.id.groceryList);
 
+        dbHelper = new DatabaseHelper(this);
+
+        //Set the navigation bar icon
+        bnv_j_groceryList_bottomNav.setSelectedItemId(R.id.groceryList);
+
         //Functions
         bottomNavOnNavItemSelectedListener();
+        fillListView();
+    }
+
+    private void fillListView()
+    {
+
     }
 
     private void bottomNavOnNavItemSelectedListener()

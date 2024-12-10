@@ -18,7 +18,7 @@
         app:menu="@menu/bottom_navigation_menu" />
 
     <Button
-        android:id="@+id/btn_v_addIngredientToPantry_addIngredient"
+        android:id="@+id/btn_v_addIngredientToPantry_addIngredientToPantry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"

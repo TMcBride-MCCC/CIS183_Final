@@ -2,6 +2,7 @@ package com.example.cis183_final;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,9 +14,6 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,7 +28,7 @@ public class AddIngredientToPantry extends AppCompatActivity
     EditText et_j_addIngredientToPantry_quantity;
     Spinner sp_j_addIngredientToPantry_units;
     EditText et_j_addIngredientToPantry_buyTrigger;
-    Button btn_j_addIngredientToPantry_addIngredient;
+    Button btn_j_addIngredientToPantry_addIngredientToPantry;
     BottomNavigationView bnv_j_addIngredientToPantry_bottomNav;
     DatabaseHelper dbHelper;
 
@@ -48,7 +46,7 @@ public class AddIngredientToPantry extends AppCompatActivity
         et_j_addIngredientToPantry_quantity = findViewById(R.id.et_v_addIngredientToPantry_quantity);
         sp_j_addIngredientToPantry_units = findViewById(R.id.sp_v_addIngredientToPantry_units);
         et_j_addIngredientToPantry_buyTrigger = findViewById(R.id.et_v_addIngredientToPantry_buyTrigger);
-        btn_j_addIngredientToPantry_addIngredient = findViewById(R.id.btn_v_addIngredientToPantry_addIngredient);
+        btn_j_addIngredientToPantry_addIngredientToPantry = findViewById(R.id.btn_v_addIngredientToPantry_addIngredientToPantry);
         bnv_j_addIngredientToPantry_bottomNav = findViewById(R.id.bnv_v_addIngredientToPantry_bottomNav);
 
         //Set the navigation bar icon
@@ -74,8 +72,8 @@ public class AddIngredientToPantry extends AppCompatActivity
     private void fillSpinners()
     {
         //Fill Ingredient spinner
-        ArrayList<String> ingredientNames = dbHelper.getAllIngredientNames();
-        ArrayAdapter<String> ingredientNamesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ingredientNames);
+        ArrayList<String> ingredientNamesNotInPantry = dbHelper.getIngredientsNotInPantry(SessionData.getLoggedInUser().getPantryId());
+        ArrayAdapter<String> ingredientNamesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ingredientNamesNotInPantry);
         sp_j_addIngredientToPantry_ingredients.setAdapter(ingredientNamesAdapter);
 
         //Fill Unit spinner
@@ -86,12 +84,34 @@ public class AddIngredientToPantry extends AppCompatActivity
 
     private void addToIngredientTableClickListener()
     {
-        tv_j_addIngredientToPantry_addIngredientToIngredientTable.setOnClickListener(new View.OnClickListener()
+        btn_j_addIngredientToPantry_addIngredientToPantry.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(AddIngredientToPantry.this, AddIngredient.class));
+                //Grab the data
+                String ingredientName = sp_j_addIngredientToPantry_ingredients.getSelectedItem().toString();
+                int quantityToAdd = Integer.parseInt(et_j_addIngredientToPantry_quantity.getText().toString());
+                int buyTrigger = Integer.parseInt(et_j_addIngredientToPantry_buyTrigger.getText().toString());
+                String unitName = sp_j_addIngredientToPantry_units.getSelectedItem().toString();
+
+                //Create a new pantry ingredient
+                PantryIngredient ingredientToAdd = new PantryIngredient();
+
+                //Set the pantryId from the logged in user's pantryId
+                ingredientToAdd.setPantryId(SessionData.getLoggedInUser().getPantryId());
+                //Set the IngredientId with dbHelper using the ingredient's name
+                ingredientToAdd.setIngredientId(dbHelper.getIngredientId(ingredientName));
+                ingredientToAdd.setPantryIngredientStock(quantityToAdd);
+                ingredientToAdd.setPantryIngredientBuyTrigger(buyTrigger);
+                ingredientToAdd.setPantryIngredientUnitId(dbHelper.getIngredientId(ingredientName));
+                //Add the ingredient to the pantry ingredient list
+                PantryIngredientList.getInstance().addPantryIngredient(ingredientToAdd);
+                //Add the ingredient to the database
+                //(pantryId, ingredientId, stock, buytrigger, unitId)
+                dbHelper.createPantryIngredient(SessionData.getLoggedInUser().getPantryId(), dbHelper.getIngredientId(ingredientName), quantityToAdd, buyTrigger, dbHelper.getIngredientId(ingredientName));
+
+                startActivity(new Intent(AddIngredientToPantry.this, Pantry.class));
             }
         });
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -45,17 +46,11 @@ public class Recipes extends AppCompatActivity
         //DATABASE
         //Make a new instance of the database
         dbHelper = new DatabaseHelper(this);
-        //Grab recipe data from the database
-        //COMMENTED OUT BECAUSE IT WAS FILLING LIST TWICE
-        //WILL THIS WORK WITH ONLY onResume()?
-        //dbHelper.fillRecipeArrayList();
 
         //Functions
         bottomNavOnNavItemSelectedListener();
         newRecipeButtonClickListener();
-        //COMMENTED OUT BECAUSE IT WAS FILLING LIST TWICE
-        //WILL THIS WORK WITH ONLY onResume()?
-        //fillListView();
+        lvLongClickListener();
     }
 
     @Override
@@ -65,6 +60,26 @@ public class Recipes extends AppCompatActivity
 
         dbHelper.fillRecipeArrayList();
         fillListView();
+    }
+
+    public void lvLongClickListener()
+    {
+        lv_j_recipes_recipeList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                //Remove recipe from database
+                Recipe recipeToDelete = RecipeList.getInstance().getRecipes().get(i);
+                dbHelper.deleteRecipe(recipeToDelete.getRecipeName());
+
+                //Remove recipe from list
+                RecipeList.getInstance().getRecipes().remove(i);
+                RecipeList.getInstance().getRecipeListAdapter().notifyDataSetChanged();
+
+                return true;
+            }
+        });
     }
 
     private void bottomNavOnNavItemSelectedListener()

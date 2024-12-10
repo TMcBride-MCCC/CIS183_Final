@@ -5,387 +5,161 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewRecipe">
+    tools:context=".NewRecipe"
+    tools:layout_editor_absoluteX="27dp"
+    tools:layout_editor_absoluteY="1dp">
 
     <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine8"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine8"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
         android:gravity="center"
         android:padding="0dp"
-        android:text="-"
+        android:text="+"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient8"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient7" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_newRecipe_addIngredientLine7" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine7"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine7"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
         android:gravity="center"
         android:padding="0dp"
-        android:text="-"
+        android:text="+"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient7"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient6" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_newRecipe_addIngredientLine6" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine6"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine6"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
         android:gravity="center"
         android:padding="0dp"
-        android:text="-"
+        android:text="+"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient6"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient5" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_newRecipe_addIngredientLine5" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine5"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine5"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
         android:gravity="center"
         android:padding="0dp"
-        android:text="-"
+        android:text="+"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient5"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient4" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_newRecipe_addIngredientLine4" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine4"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine4"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="9dp"
         android:gravity="center"
         android:padding="0dp"
-        android:text="-"
+        android:text="+"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient4"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient3" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_newRecipe_addIngredientLine3" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine3"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine3"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
         android:gravity="center"
         android:padding="0dp"
-        android:text="-"
+        android:text="+"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine3"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient3"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_newRecipe_addIngredientLine2" />
 
     <Button
-        android:id="@+id/btn_v_newRecipe_deleteIngredientLine2"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/btn_v_newRecipe_addIngredientLine2"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="9dp"
         android:gravity="center"
         android:padding="0dp"
-        android:text="-"
+        android:text="+"
         android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_v_newRecipe_addIngredientLine2"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient1" />
 
     <Spinner
-        android:id="@+id/sp_v_newRecipe_unit8"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit7" />
-
-    <Spinner
         android:id="@+id/sp_v_newRecipe_quantity8"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit8"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity7" />
-
-    <Spinner
-        android:id="@+id/sp_v_newRecipe_ingredient8"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity2"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient7" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine8"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient7" />
-
-    <Spinner
-        android:id="@+id/sp_v_newRecipe_unit7"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit6" />
+        android:layout_width="107dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity7"
+        tools:layout_editor_absoluteX="179dp" />
 
     <Spinner
         android:id="@+id/sp_v_newRecipe_quantity7"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit7"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_width="107dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity6" />
 
     <Spinner
-        android:id="@+id/sp_v_newRecipe_ingredient7"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity2"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient6" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine7"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient6" />
-
-    <Spinner
-        android:id="@+id/sp_v_newRecipe_unit6"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit5" />
-
-    <Spinner
         android:id="@+id/sp_v_newRecipe_quantity6"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit6"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_width="107dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity5" />
 
     <Spinner
-        android:id="@+id/sp_v_newRecipe_ingredient6"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity2"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient5" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine6"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient5" />
-
-    <Spinner
         android:id="@+id/sp_v_newRecipe_quantity5"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit5"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_width="107dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity4" />
 
     <Spinner
-        android:id="@+id/sp_v_newRecipe_ingredient5"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity2"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient4" />
-
-    <Spinner
-        android:id="@+id/sp_v_newRecipe_unit5"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit4" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine5"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient4" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine4"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient3" />
-
-    <Spinner
         android:id="@+id/sp_v_newRecipe_quantity4"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit4"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_width="107dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity3" />
 
     <Spinner
-        android:id="@+id/sp_v_newRecipe_ingredient4"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity2"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient3" />
-
-    <Spinner
-        android:id="@+id/sp_v_newRecipe_unit4"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit3" />
-
-    <Spinner
-        android:id="@+id/sp_v_newRecipe_ingredient3"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity2"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient2" />
-
-    <Spinner
-        android:id="@+id/sp_v_newRecipe_unit3"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit2" />
-
-    <Spinner
         android:id="@+id/sp_v_newRecipe_quantity3"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit3"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_width="107dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity2" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine3"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
-        app:layout_constraintHorizontal_bias="0.978"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient2" />
 
     <Button
         android:id="@+id/btn_v_newRecipe_addRecipeInstructions"
@@ -411,56 +185,172 @@
 
     <Spinner
         android:id="@+id/sp_v_newRecipe_ingredient2"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity2"
-        app:layout_constraintHorizontal_bias="0.817"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient1" />
 
     <Spinner
-        android:id="@+id/sp_v_newRecipe_unit2"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
+        android:id="@+id/sp_v_newRecipe_ingredient8"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit1" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient7" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_ingredient3"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient2" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_ingredient4"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient3" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_ingredient5"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient4" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_ingredient6"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient5" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_ingredient7"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient6" />
 
     <Spinner
         android:id="@+id/sp_v_newRecipe_quantity2"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
+        android:layout_width="107dp"
+        android:layout_height="28dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit2"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_quantity1" />
 
     <Spinner
         android:id="@+id/sp_v_newRecipe_unit1"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_unit2"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit1" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_unit3"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit2" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_unit4"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit3" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_unit5"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit4" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_unit6"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit5" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_unit7"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit6" />
+
+    <Spinner
+        android:id="@+id/sp_v_newRecipe_unit8"
+        android:layout_width="102dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_unit7" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="54dp"
         android:text="Unit"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_v_newRecipe_recipeName" />
 
@@ -468,20 +358,20 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="54dp"
         android:text="Quanitity"
-        app:layout_constraintEnd_toStartOf="@+id/textView17"
-        app:layout_constraintHorizontal_bias="0.782"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_v_newRecipe_recipeName" />
 
     <Spinner
         android:id="@+id/sp_v_newRecipe_quantity1"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_unit1"
-        app:layout_constraintHorizontal_bias="0.933"
+        android:layout_width="107dp"
+        android:layout_height="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -503,7 +393,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Meal Time"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -513,9 +403,8 @@
         android:id="@+id/sp_v_newRecipe_mealTime"
         android:layout_width="206dp"
         android:layout_height="26dp"
-        android:layout_marginTop="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -523,11 +412,10 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="36dp"
         android:text="Recipe Name"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_mealTime" />
 
@@ -546,37 +434,22 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="54dp"
         android:text="Ingredient"
-        app:layout_constraintEnd_toStartOf="@+id/textView16"
-        app:layout_constraintHorizontal_bias="0.704"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_v_newRecipe_recipeName" />
 
     <Spinner
         android:id="@+id/sp_v_newRecipe_ingredient1"
-        android:layout_width="83dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_quantity1"
-        app:layout_constraintHorizontal_bias="0.817"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <Button
-        android:id="@+id/btn_v_newRecipe_addIngredientLine2"
-        android:layout_width="27dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_v_newRecipe_ingredient2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_v_newRecipe_ingredient1" />
 
     <Button
         android:id="@+id/btn_v_newRecipe_addRecipe"

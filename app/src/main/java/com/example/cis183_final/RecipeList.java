@@ -94,7 +94,7 @@ public class RecipeList
         }
         else
         {
-            Log.d("RECIPELIST notifyAdapterToRefresh()", "recipeListAdapter is null");
+            //Log.d("RECIPELIST notifyAdapterToRefresh()", "recipeListAdapter is null");
         }
     }
 }

@@ -50,6 +50,9 @@ public class HomePage extends AppCompatActivity
         btn_j_home_sunday = findViewById(R.id.btn_v_home_sunday);
         bnv_j_home_bottomNav = findViewById(R.id.bnv_v_main_bottomNav);
 
+        //Set the navigation bar icon
+        bnv_j_home_bottomNav.setSelectedItemId(R.id.home);
+
         //DATABASE
         //Make a new instance of the database
         dbHelper = new DatabaseHelper(this);

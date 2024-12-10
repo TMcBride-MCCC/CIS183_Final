@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -44,6 +45,7 @@ public class Pantry extends AppCompatActivity
         //Functions
         bottomNavOnNavItemSelectedListener();
         addIngredientButtonClickListener();
+        pantryIngredientListViewOnItemClickListener();
     }
 
     @Override
@@ -52,6 +54,26 @@ public class Pantry extends AppCompatActivity
         super.onResume();
         dbHelper.fillPantryIngredientsArrayListGivenUserPantryId(SessionData.getLoggedInUser().getPantryId());
         fillListView();
+    }
+
+    private void pantryIngredientListViewOnItemClickListener()
+    {
+        lv_j_pantry_listOfIngredients.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                //Remove ingredient from database
+                PantryIngredient ingredientToDelete = PantryIngredientList.getInstance().getPantryIngredients().get(i);
+                dbHelper.deletePantryIngredient(SessionData.getLoggedInUser().getPantryId(), ingredientToDelete.getIngredientId());
+
+                //Remove ingredient from list
+                PantryIngredientList.getInstance().getPantryIngredients().remove(i);
+                PantryIngredientList.getInstance().getPantryListAdapter().notifyDataSetChanged();
+
+                return true;
+            }
+        });
     }
 
     private void bottomNavOnNavItemSelectedListener()

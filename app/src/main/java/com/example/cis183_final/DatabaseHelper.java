@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public DatabaseHelper(Context c)
     {
-        super (c, database_name, null, 11);
+        super (c, database_name, null, 12);
     }
     @Override
     public void onCreate(SQLiteDatabase db)
@@ -1219,6 +1219,29 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return mealTime;
     }
 
+    public int getMealTimeId(String mealTimeNameThatWasPassed)
+    {
+        int mealTimeId = -1;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectMealTimeId = "SELECT mealTimeID FROM " + mealTime_table_name + " WHERE mealTime = '" + mealTimeNameThatWasPassed + "';";
+
+        Cursor cursor = db.rawQuery(selectMealTimeId, null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+            mealTimeId = cursor.getInt(0);
+        }
+        else
+        {
+            Log.d("ERROR IN DATABASE getMealTime(): ", "Cursor is null ");
+        }
+
+        return mealTimeId;
+    }
+
     public boolean mealTimeExists(int mealTimeId)
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1243,6 +1266,64 @@ public class DatabaseHelper extends SQLiteOpenHelper
         {
             return false;
         }
+    }
+
+    public ArrayList<String> getAllMealTimes()
+    {
+        //Make a new array list
+        ArrayList<String> mealTimes = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Query to run
+        String selectMealTimes = "SELECT mealTime FROM " + mealTime_table_name;
+
+        Cursor cursor = db.rawQuery(selectMealTimes,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                mealTimes.add(cursor.getString(0));
+
+                cursor.moveToNext();
+            }
+        }
+        else
+        {
+            Log.d("DATABASE getCategoryNames()","cursor came back null");
+        }
+
+        db.close();
+        return mealTimes;
+    }
+
+    public void addNewRecipe(int mealTimeThatWasPassed, String recipeNameThatWasPassed, String instructionsThatWerePassed, int makeCountThatWasPassed)
+    {
+        //Grab a writeable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("INSERT INTO " + recipes_table_name + " (mealTimeID, recipeName, instructions, makeCount) " +
+                "VALUES ('" + mealTimeThatWasPassed + "', '"
+                + recipeNameThatWasPassed + "', '"
+                + instructionsThatWerePassed + "', '"
+                + makeCountThatWasPassed + "');");
+
+        db.close();
+    }
+
+    public void deleteRecipe(String recipeThatWasPassed)
+    {
+        //Get writable copy of the database
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Query
+        db.execSQL("DELETE FROM " + recipes_table_name + " WHERE recipeName = '" + recipeThatWasPassed + "';");
+
+        db.close();
     }
 
     //==============================================================================================================================================
@@ -1565,6 +1646,32 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return unitAbbv;
     }
 
+    public void deletePantryIngredient(int pantryIdThatWasPassed, int ingredientIdThatWasPassed)
+    {
+        //Get writable copy of the database
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Query
+        db.execSQL("DELETE FROM " + pantryIngredients_table_name + " WHERE pantryID = '" + pantryIdThatWasPassed + "' AND ingredientID = '" + ingredientIdThatWasPassed + "';");
+
+        db.close();
+    }
+
+    public void createPantryIngredient(int pantryIdThatWasPassed, int ingredientIdThatWasPassed, int pantryIngredientStockThatWasPassed, int pantryIngredientBuyTriggerThatWasPassed, int pantryIngredientUnitIdThatWasPassed)
+    {
+        //Grab a writeable database copy
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("INSERT INTO " + pantryIngredients_table_name + " (pantryID, ingredientID, pantryIngredientStock, pantryIngredientBuyTrigger, pantryIngredientUnitID) " +
+                "VALUES ('" + pantryIdThatWasPassed + "', '"
+                + ingredientIdThatWasPassed + "', '"
+                + pantryIngredientStockThatWasPassed + "', '"
+                + pantryIngredientBuyTriggerThatWasPassed + "','"
+                + pantryIngredientUnitIdThatWasPassed + "');");
+
+        db.close();
+    }
+
     //==============================================================================================================================================
     //                                                                  Global Ingredients
     //==============================================================================================================================================
@@ -1631,6 +1738,65 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         db.close();
         return listOfIngredientNames;
+    }
+
+    public int getIngredientId(String ingredientNameThatWasPassed)
+    {
+        int ingredientID = -1;
+
+        //Get a readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectIngredientId = "SELECT ingredientID FROM " + ingredients_table_name + " WHERE ingredientName ='" + ingredientNameThatWasPassed + "';";
+
+        Cursor cursor = db.rawQuery(selectIngredientId,null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+            ingredientID = cursor.getInt(0);
+        }
+
+        db.close();
+
+        return ingredientID;
+    }
+
+    public ArrayList<String> getIngredientsNotInPantry(int pantryIdThatWasPassed)
+    {
+        ArrayList<String> listOfIngredients = new ArrayList<>();
+
+        //Get a readable database copy
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Select query
+        String selectIngredientsNotInPantry = "SELECT ingredientName FROM " + ingredients_table_name + " WHERE ingredientID NOT IN (SELECT ingredientID FROM " + pantryIngredients_table_name + " WHERE pantryID = " + pantryIdThatWasPassed + ");";
+
+        Cursor cursor = db.rawQuery(selectIngredientsNotInPantry,null);
+
+        if (cursor != null)
+        {
+            if (cursor.moveToFirst())
+            {
+                for (int i = 0; i < cursor.getCount(); i++)
+                {
+                    listOfIngredients.add(cursor.getString(0));
+                    cursor.moveToNext();
+                }
+            }
+            else
+            {
+                Log.d("DATABASE getIngredientsNotInPantry()", "Cursor cannot move to first");
+            }
+
+        }
+        else
+        {
+            Log.d("DATABASE getIngredientsNotInPantry()", "Cursor came back null");
+        }
+
+        db.close();
+        return listOfIngredients;
     }
 
 /*    //Function to get the a list of all ingredientNames from Ingredients table
